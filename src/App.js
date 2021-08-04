@@ -56,6 +56,18 @@ function App() {
       <Highlight report={report} />
 
       <Summary countryTag={selectedCountryTag} />
+
+      <Typography
+        style={{
+          margin: 30,
+          textAlign: 'center',
+          color: 'rgb(102 102 102 / 50%)',
+        }}
+      >
+        Referenced by HoleTex
+        <br />
+        Practiced by Ta Trung Hieu
+      </Typography>
     </Container>
   );
 }
