@@ -2,12 +2,11 @@ import '@fontsource/roboto';
 import { Container, Divider, Typography } from '@material-ui/core';
 import moment from 'moment';
 import 'moment/locale/vi';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { getApiCountries, getApiReportByCountry } from './apis';
+import { useCallback, useEffect, useState } from 'react';
+import { getApiCountries, getReportByCountry } from './apis';
 import CountrySelector from './components/CountrySelector';
 import Highlight from './components/Highlight';
 import Overview from './components/Overview';
-import PieChart from './components/Overview/components/PieChart';
 import Summary from './components/Summary';
 
 // moment.locale('vi')
@@ -15,7 +14,7 @@ import Summary from './components/Summary';
 function App() {
   const [countries, setCountries] = useState([]);
   const [selectedCountryTag, setSelectedCountryTag] = useState('');
-  const [report, setReport] = useState([]);
+  const [report, setReport] = useState({});
 
   useEffect(() => {
     getApiCountries().then((res) => {
@@ -30,47 +29,11 @@ function App() {
 
   useEffect(() => {
     if (selectedCountryTag) {
-      const selectedCountry = countries.find(
-        (country) => country.ISO2 === selectedCountryTag.toUpperCase()
-      );
-
-      getApiReportByCountry(selectedCountry.Slug).then((res) => {
-        const data = res.data;
-        data.pop();
-        setReport(data);
+      getReportByCountry(selectedCountryTag).then((res) => {
+        setReport(res.data);
       });
     }
   }, [countries, selectedCountryTag]);
-
-  const summary = useMemo(() => {
-    if (report && report.length) {
-      const latestData = report[report.length - 1];
-      return [
-        {
-          title: 'Số ca nhiễm',
-          count: latestData.Confirmed,
-          style: {
-            color: '#c9302c',
-          },
-        },
-        {
-          title: 'Số ca khỏi',
-          count: latestData.Recovered,
-          style: {
-            color: '#28a745',
-          },
-        },
-        {
-          title: 'Số ca tử vong',
-          count: latestData.Deaths,
-          style: {
-            color: 'gray',
-          },
-        },
-      ];
-    }
-    return [];
-  }, [report]);
 
   return (
     <Container style={{ marginTop: 20 }}>
@@ -88,11 +51,11 @@ function App() {
         value={selectedCountryTag}
       />
 
-      <Overview slug={selectedCountryTag} summary={summary}/>
+      <Overview report={report} />
 
-      <Highlight summary={summary} />
+      <Highlight report={report} />
 
-      <Summary report={report} selectedCountryTag={selectedCountryTag} />
+      <Summary countryTag={selectedCountryTag} />
     </Container>
   );
 }

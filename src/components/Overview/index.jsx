@@ -4,58 +4,56 @@ import { Grid, Paper, makeStyles } from '@material-ui/core';
 import CountryInfo from './components/CountryInfo';
 import PieChart from './components/PieChart';
 import { useState } from 'react';
+import roundTo from 'round-to';
 
-const useStyle = makeStyles((theme)=>({
+const useStyle = makeStyles((theme) => ({
   info: {
     textAlign: 'center',
-    height: '100%'
-  }
-}))
+    height: '100%',
+  },
+}));
 
 Overview.propTypes = {
-  slug: PropTypes.string,
-  summary: PropTypes.array,
+  report: PropTypes.object,
 };
 
-function Overview({ slug, summary }) {
+function Overview({ report }) {
   const classes = useStyle();
   const [dataChart, setDataChart] = useState([]);
 
   useEffect(() => {
-    if (summary.length > 0) {
-      const total = summary[0].count;
-      const recovered = summary[1].count;
-      const death = summary[2].count;
+    if (Object.keys(report).length > 0) {
+      const { cases, active, recovered, deaths } = report;
 
       const data = [
         {
           name: 'Đang điều trị',
-          y: (1 - recovered / total - death / total) * 100,
+          y: roundTo((active / cases) * 100, 2),
         },
         {
           name: 'Chữa khỏi',
-          y: (recovered / total) * 100,
+          y: roundTo((recovered / cases) * 100, 2),
         },
         {
           name: 'Tử vong',
-          y: (death / total) * 100,
+          y: roundTo((deaths / cases) * 100, 2),
         },
       ];
 
       setDataChart(data);
     }
-  }, [summary]);
+  }, [report]);
 
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md={5}>
         <Paper className={classes.info}>
-          <CountryInfo slug={slug} />
+          <CountryInfo report={report} />
         </Paper>
       </Grid>
 
       <Grid item xs={12} md={7}>
-        <Paper style={{height: "100%"}}>
+        <Paper style={{ height: '100%' }}>
           <PieChart dataChart={dataChart} />
         </Paper>
       </Grid>

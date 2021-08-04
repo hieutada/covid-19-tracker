@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { DiseaseColors } from '../../../constants';
 
 PieChart.propTypes = {
   dataChart: PropTypes.array,
 };
 
 const generateOptions = (data) => {
-
   return {
     chart: {
       type: 'pie',
@@ -15,10 +16,7 @@ const generateOptions = (data) => {
     title: {
       text: null,
     },
-    subtitle: {
-      text: 'Số liệu cập nhật từ WHO',
-    },
-
+    
     accessibility: {
       announceNewData: {
         enabled: true,
@@ -32,25 +30,29 @@ const generateOptions = (data) => {
       series: {
         dataLabels: {
           enabled: true,
-          format: '{point.name}: {point.y:.1f}%',
+          format: '{point.name}<br/><span style="font-size:18px">{point.y:.1f}%</span>',
         },
       },
     },
 
     tooltip: {
-      headerFormat: '<span style="font-size:13px">{series.name}</span><br>',
+      headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
       pointFormat:
-        '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b>%<br/>',
+        '(<span style="color:{point.color}">{point.name}</span>: <b>{point.y}%</b><br/>)',
     },
 
-    colors: ['#77a1e5', '#28a745', 'gray'],
+    colors: [
+      DiseaseColors.ACTIVE,
+      DiseaseColors.RECOVERED,
+      DiseaseColors.DEATHS,
+    ],
 
     series: [
       {
         name: 'Tỉ lệ',
         colorByPoint: true,
         innerSize: '60%',
-        data: data,
+        data: [...data],
       },
     ],
   };
@@ -65,7 +67,7 @@ function PieChart({ dataChart }) {
     }
   }, [dataChart]);
 
-  return <HighchartsReact options={options} />;
+  return <HighchartsReact highcharts={Highcharts} options={options} />;
 }
 
 export default PieChart;

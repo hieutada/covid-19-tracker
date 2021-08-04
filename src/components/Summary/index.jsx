@@ -1,36 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Grid, Paper } from '@material-ui/core';
-import LineChart from './components/LineChart';
-import HighMaps from './components/HighMaps';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { getMapDataByCountryTag } from '../../apis';
+import HighMaps from './components/HighMaps';
+import LineChart from './components/LineChart';
 
 Summary.propTypes = {
-  report: PropTypes.array,
-  selectedCountryTag: PropTypes.string,
+  countryTag: PropTypes.string,
 };
 
-function Summary({ report, selectedCountryTag }) {
+function Summary({ countryTag }) {
   const [mapData, setMapData] = useState({});
 
   useEffect(() => {
-    if (selectedCountryTag) {
-      getMapDataByCountryTag(selectedCountryTag).then(
-        async (res) => await setMapData(res)
-      );
+    if (countryTag) {
+      getMapDataByCountryTag(countryTag).then((res) => setMapData(res));
     }
-  }, [selectedCountryTag]);
+  }, [countryTag]);
 
   return (
     <Grid container spacing={3}>
       <Grid item sm={8} xs={12}>
-        <LineChart data={report} />
+        <LineChart slug={countryTag} />
       </Grid>
 
       <Grid item sm={4} xs={12}>
-        <Paper>
-          <HighMaps mapData={mapData} />
-        </Paper>
+        <Paper><HighMaps mapData={mapData} /></Paper>
       </Grid>
     </Grid>
   );

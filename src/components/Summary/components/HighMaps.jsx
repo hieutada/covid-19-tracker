@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import highchartsMap from 'highcharts/modules/map';
 import { cloneDeep } from 'lodash';
-import { Paper } from '@material-ui/core';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Load Highcharts modules
 highchartsMap(Highcharts);
@@ -12,12 +11,18 @@ const initOptions = {
   chart: {
     height: '500px',
   },
+
   title: {
     text: null,
   },
+
   mapNavigation: {
     enabled: true,
+    buttonOptions: {
+      align: 'right',
+    },
   },
+
   colorAxis: {
     min: 0,
     stops: [
@@ -28,16 +33,13 @@ const initOptions = {
       [1, '	#7A0826'],
     ],
   },
+
   legend: {
     layout: 'horizontal',
     align: 'center',
     verticalAlign: 'bottom',
   },
-  mapNavigation: {
-    buttonOptions: {
-      align: 'right',
-    },
-  },
+
   series: [
     {
       name: 'Số ca',
