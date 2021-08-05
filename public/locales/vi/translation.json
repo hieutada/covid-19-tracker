@@ -1,0 +1,22 @@
+{
+  "title_app": "SỐ LIỆU COVID-19",
+  "language": "Ngôn ngữ",
+  "country_select": "Quốc gia",
+  "country_heper_text": "Lựa chọn quốc gia",
+  "total cases": "số ca nhiễm",
+  "active": "đang điều trị",
+  "recovered": "hồi phục",
+  "deaths": "tử vong",
+  "region": "Khu vực",
+  "population": "Dân số",
+  "Asia": "Châu Á",
+  "Africa": "Châu Phi",
+  "Europe": "Châu Âu",
+  "North America": "Bắc Mỹ",
+  "South America": "Nam Mỹ",
+  "Australia-Oceania": "Châu Đại Dương",
+  "all": "tất cả",
+  "30 days": "30 ngày",
+  "7 days": "7 ngày",
+  "title_line_chart": "Lịch sử ghi nhận Covid-19"
+}

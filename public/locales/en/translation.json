@@ -1,0 +1,22 @@
+{
+  "title_app": "COVID-19 DATA",
+  "language": "Language",
+  "country_select": "Country",
+  "country_heper_text": "Select country",
+  "total cases": "total cases",
+  "active": "active",
+  "recovered": "recovered",
+  "deaths": "deaths",
+  "region": "Region",
+  "population": "Population",
+  "Asia": "Asia",
+  "Africa": "Africa",
+  "Europe": "Europe",
+  "North America": "North America",
+  "South America": "South America",
+  "Australia-Oceania": "Australia-Oceania",
+  "all": "all",
+  "30 days": "30 days",
+  "7 days": "7 days",
+  "title_line_chart": "Recorded history of Covid-19"
+}

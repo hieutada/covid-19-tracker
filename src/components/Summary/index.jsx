@@ -9,7 +9,7 @@ Summary.propTypes = {
   countryTag: PropTypes.string,
 };
 
-function Summary({ countryTag }) {
+function Summary({ t, countryTag }) {
   const [mapData, setMapData] = useState({});
 
   useEffect(() => {
@@ -21,11 +21,13 @@ function Summary({ countryTag }) {
   return (
     <Grid container spacing={3}>
       <Grid item sm={8} xs={12}>
-        <LineChart slug={countryTag} />
+        <LineChart t={t} slug={countryTag} />
       </Grid>
 
       <Grid item sm={4} xs={12}>
-        <Paper><HighMaps mapData={mapData} /></Paper>
+        <Paper>
+          <HighMaps mapData={mapData} />
+        </Paper>
       </Grid>
     </Grid>
   );

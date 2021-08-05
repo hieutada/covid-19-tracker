@@ -17,7 +17,7 @@ Overview.propTypes = {
   report: PropTypes.object,
 };
 
-function Overview({ report }) {
+function Overview({ t, report }) {
   const classes = useStyle();
   const [dataChart, setDataChart] = useState([]);
 
@@ -27,28 +27,28 @@ function Overview({ report }) {
 
       const data = [
         {
-          name: 'Đang điều trị',
+          name: t('active'),
           y: roundTo((active / cases) * 100, 2),
         },
         {
-          name: 'Chữa khỏi',
+          name: t('recovered'),
           y: roundTo((recovered / cases) * 100, 2),
         },
         {
-          name: 'Tử vong',
+          name: t('deaths'),
           y: roundTo((deaths / cases) * 100, 2),
         },
       ];
 
       setDataChart(data);
     }
-  }, [report]);
+  }, [t, report]);
 
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md={5}>
         <Paper className={classes.info}>
-          <CountryInfo report={report} />
+          <CountryInfo t={t} report={report} />
         </Paper>
       </Grid>
 

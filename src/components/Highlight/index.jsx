@@ -10,34 +10,34 @@ Highlight.propTypes = {
   report: PropTypes.object,
 };
 
-function Highlight({ report }) {
+function Highlight({ t, report }) {
   const [dataCard, setDataCard] = useState([]);
 
   useEffect(() => {
     const data = [
       {
-        title: 'SỐ CA NHIỄM',
+        title: t('total cases').toUpperCase(),
         count: report.cases,
         style: {
           color: DiseaseColors.CASES,
         },
       },
       {
-        title: 'ĐANG ĐIỀU TRỊ',
+        title: t('active').toUpperCase(),
         count: report.active,
         style: {
           color: DiseaseColors.ACTIVE,
         },
       },
       {
-        title: 'HỒI PHỤC',
+        title: t('recovered').toUpperCase(),
         count: report.recovered,
         style: {
           color: DiseaseColors.RECOVERED,
         },
       },
       {
-        title: 'TỬ VONG',
+        title: t('deaths').toUpperCase(),
         count: report.deaths,
         style: {
           color: DiseaseColors.DEATHS,
@@ -46,7 +46,7 @@ function Highlight({ report }) {
     ];
 
     setDataCard(data);
-  }, [report]);
+  }, [t, report]);
 
   return (
     <Grid container spacing={3}>

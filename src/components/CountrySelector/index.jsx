@@ -2,10 +2,11 @@ import {
   FormControl,
   FormHelperText,
   InputLabel,
-  MenuItem, Select
+  MenuItem,
+  Select,
 } from '@material-ui/core';
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 CountrySelector.propTypes = {
   value: PropTypes.string,
@@ -13,16 +14,15 @@ CountrySelector.propTypes = {
   countries: PropTypes.array,
 };
 
-function CountrySelector({ value, handleOnChange, countries }) {
-
+function CountrySelector({ value, handleOnChange, countries, t }) {
   const countriesList = countries.sort((a, b) =>
     a.Country.localeCompare(b.Country)
   );
 
   return (
-    <FormControl style={{marginTop: 10, marginBottom: 10}}>
+    <FormControl>
       <InputLabel id='country-select-label' shrink>
-        Quốc gia
+        {t('country_select')}
       </InputLabel>
 
       <Select
@@ -42,7 +42,7 @@ function CountrySelector({ value, handleOnChange, countries }) {
           </MenuItem>
         ))}
       </Select>
-      <FormHelperText>Lựa chọn quốc gia</FormHelperText>
+      <FormHelperText>{t('country_heper_text')}</FormHelperText>
     </FormControl>
   );
 }

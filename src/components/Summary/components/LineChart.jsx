@@ -10,14 +10,14 @@ LineChart.propTypes = {
   slug: PropTypes.string,
 };
 
-const generateOptions = (categories, series) => {
+const generateOptions = (title, categories, series) => {
   return {
     chart: {
       height: 500,
     },
 
     title: {
-      text: 'Lịch sử ghi nhận Covid-19',
+      text: title,
     },
 
     subtitle: {
@@ -53,7 +53,7 @@ const generateOptions = (categories, series) => {
   };
 };
 
-function LineChart({ slug }) {
+function LineChart({ t, slug }) {
   const [options, setOptions] = useState({});
   const [reportType, setReportType] = useState('30');
 
@@ -62,27 +62,29 @@ function LineChart({ slug }) {
       getHistoryByCountry(slug, reportType).then((res) => {
         const { cases, recovered, deaths } = res.data.timeline;
 
+        const title = t('title_line_chart');
+
         const timeLine = Object.keys(cases);
 
         const series = [
           {
-            name: 'Số ca mắc',
+            name: t('total cases'),
             data: Object.keys(cases).map((key) => cases[key]),
           },
           {
-            name: 'Số ca hồi phục',
+            name: t('recovered'),
             data: Object.keys(recovered).map((key) => recovered[key]),
           },
           {
-            name: 'Số ca tử vong',
+            name: t('deaths'),
             data: Object.keys(deaths).map((key) => deaths[key]),
           },
         ];
 
-        setOptions(generateOptions(timeLine, series));
+        setOptions(generateOptions(title, timeLine, series));
       });
     }
-  }, [slug, reportType]);
+  }, [t, slug, reportType]);
 
   const reportTypeChange = (event, value) => {
     setReportType(value);
@@ -97,13 +99,13 @@ function LineChart({ slug }) {
         size='small'
       >
         <ToggleButton value='all' aria-label='all'>
-          Tất cả
+          {t('all')}
         </ToggleButton>
         <ToggleButton value='30' aria-label='30d'>
-          30 ngày
+          {t('30 days')}
         </ToggleButton>
         <ToggleButton value='7' aria-label='7d'>
-          7 ngày
+          {t('7 days')}
         </ToggleButton>
       </ToggleButtonGroup>
 

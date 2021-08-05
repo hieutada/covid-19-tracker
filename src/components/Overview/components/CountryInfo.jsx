@@ -8,7 +8,7 @@ CountryInfo.propTypes = {
   report: PropTypes.object,
 };
 
-function CountryInfo({ report }) {
+function CountryInfo({ t, report }) {
   return (
     <>
       {Object.keys(report).length > 0 ? (
@@ -20,9 +20,11 @@ function CountryInfo({ report }) {
             style={{ marginTop: 20 }}
           />
           <Typography variant='h5'>{report.country}</Typography>
-          <Typography>Khu vực: {report.continent}</Typography>
           <Typography>
-            Dân số:{' '}
+            {t('region')}: {t(report.continent)}
+          </Typography>
+          <Typography>
+            {t('population')}:{' '}
             {new Intl.NumberFormat('vi-VN').format(report.population)}
           </Typography>
         </>
