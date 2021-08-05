@@ -21,11 +21,13 @@ function Summary({ t, countryTag }) {
   return (
     <Grid container spacing={3}>
       <Grid item sm={8} xs={12}>
-        <LineChart t={t} slug={countryTag} />
+        <Paper>
+          <LineChart t={t} slug={countryTag} />
+        </Paper>
       </Grid>
 
       <Grid item sm={4} xs={12}>
-        <Paper>
+        <Paper style={{height: '100%'}}>
           <HighMaps mapData={mapData} />
         </Paper>
       </Grid>

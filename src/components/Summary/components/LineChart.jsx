@@ -97,6 +97,7 @@ function LineChart({ t, slug }) {
         exclusive
         onChange={reportTypeChange}
         size='small'
+        style={{marginTop: 10, marginLeft: 10}}
       >
         <ToggleButton value='all' aria-label='all'>
           {t('all')}

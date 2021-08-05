@@ -1,3 +1,4 @@
+import { Box } from '@material-ui/core';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import highchartsMap from 'highcharts/modules/map';
@@ -85,12 +86,14 @@ const HighMaps = ({ mapData }) => {
   if (!mapLoaded) return null;
 
   return (
-    <HighchartsReact
-      highcharts={Highcharts}
-      options={cloneDeep(options)}
-      constructorType={'mapChart'}
-      ref={chartRef}
-    />
+    <Box paddingTop={'8px'}>
+      <HighchartsReact
+        highcharts={Highcharts}
+        options={cloneDeep(options)}
+        constructorType={'mapChart'}
+        ref={chartRef}
+      />
+    </Box>
   );
 };
 
