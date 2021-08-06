@@ -4,17 +4,18 @@ import HighchartsReact from 'highcharts-react-official';
 import highchartsMap from 'highcharts/modules/map';
 import { cloneDeep } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
+import { getDetailVn } from '../../../apis';
 
 // Load Highcharts modules
 highchartsMap(Highcharts);
 
-const initOptions = {
+const generateOptions = (mapData, data, maxLinearColor) => ({
   chart: {
     height: '500px',
   },
 
   title: {
-    text: null,
+    text: mapData.title,
   },
 
   mapNavigation: {
@@ -26,6 +27,7 @@ const initOptions = {
 
   colorAxis: {
     min: 0,
+    max: maxLinearColor,
     stops: [
       [0.2, '#FFC4AA'],
       [0.4, '#FF8A66'],
@@ -43,11 +45,13 @@ const initOptions = {
 
   series: [
     {
+      data: data,
+      mapData: mapData,
+      joinBy: 'name',
       name: 'Số ca',
-      joinBy: ['hc-key', 'key'],
     },
   ],
-};
+});
 
 const HighMaps = ({ mapData }) => {
   const [options, setOptions] = useState({});
@@ -56,20 +60,29 @@ const HighMaps = ({ mapData }) => {
 
   useEffect(() => {
     if (mapData && Object.keys(mapData).length) {
-      const fakeData = mapData.features.map((feature, index) => ({
-        key: feature.properties['hc-key'],
-        value: index,
-      }));
+      if (mapData.title === 'Vietnam') {
+        getDetailVn().then((res) => {
+          const provinces = res.data.detail;
 
-      setOptions(() => ({
-        ...initOptions,
-        title: {
-          text: mapData.title,
-        },
-        series: [
-          { ...initOptions.series[0], mapData: mapData, data: fakeData },
-        ],
-      }));
+          const data = Object.values(provinces).map((obj) => ({
+            name: obj.name,
+            value: obj.cases,
+          }));
+
+          const maxLinearColor =
+            data.reduce((a, b) => a + parseInt(b.value), 0) / data.length;
+
+          setOptions(generateOptions(mapData, data, maxLinearColor));
+        });
+
+      } else {
+        const fakeData = mapData.features.map((feature, index) => ({
+          name: feature.properties['name'],
+          value: index,
+        }));
+
+        setOptions(generateOptions(mapData, fakeData, fakeData.length));
+      }
 
       if (!mapLoaded) setMapLoaded(true);
     }

@@ -15,3 +15,6 @@ export const getHistoryByCountry = (slug, num) =>
   axios.get(
     `https://disease.sh/v3/covid-19/historical/${slug}?lastdays=${num}`
   );
+
+export const getDetailVn = () =>
+  axios.get('https://api-kent.netlify.app/.netlify/functions/api/vn');

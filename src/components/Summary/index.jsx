@@ -2,6 +2,7 @@ import { Grid, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { getMapDataByCountryTag } from '../../apis';
+import { VnAllGeo } from '../../constants';
 import HighMaps from './components/HighMaps';
 import LineChart from './components/LineChart';
 
@@ -14,7 +15,11 @@ function Summary({ t, countryTag }) {
 
   useEffect(() => {
     if (countryTag) {
-      getMapDataByCountryTag(countryTag).then((res) => setMapData(res));
+      if (countryTag === 'vn') {
+        setMapData(VnAllGeo);
+      } else {
+        getMapDataByCountryTag(countryTag).then((res) => setMapData(res));
+      }
     }
   }, [countryTag]);
 
@@ -27,8 +32,9 @@ function Summary({ t, countryTag }) {
       </Grid>
 
       <Grid item sm={4} xs={12}>
-        <Paper style={{height: '100%'}}>
+        <Paper style={{ height: '100%' }}>
           <HighMaps mapData={mapData} />
+          {/* <HighMaps mapData={customData} /> */}
         </Paper>
       </Grid>
     </Grid>
