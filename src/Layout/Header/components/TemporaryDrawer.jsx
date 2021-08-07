@@ -7,10 +7,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
 import { Menu } from '@material-ui/icons';
 import React from 'react';
+import ScrollDialog from './ScrollDialog';
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: 'auto',
   },
   fullList: {
     width: 'auto',
@@ -36,8 +37,8 @@ export default function TemporaryDrawer() {
     <div
       className={classes.list}
       role='presentation'
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      // onClick={toggleDrawer(false)}
+      // onKeyDown={toggleDrawer(false)}
     >
       <List>
         <ListItem button key={'info'}>
@@ -55,6 +56,7 @@ export default function TemporaryDrawer() {
         <ListItem button key={'vaccin'}>
           <ListItemText primary='Các chủng loại vaccine' />
         </ListItem>
+      <ScrollDialog />
       </List>
     </div>
   );
@@ -62,9 +64,10 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment key={'left'}>
-        <IconButton color='inherit' onClick={toggleDrawer('left', true)}>
+        <IconButton color='inherit' onClick={toggleDrawer(true)}>
           <Menu />
         </IconButton>
+
         <Drawer anchor={'left'} open={open} onClose={toggleDrawer(false)}>
           {list()}
         </Drawer>
