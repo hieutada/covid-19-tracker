@@ -1,8 +1,10 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import TranslateIcon from '@material-ui/icons/Translate';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-function LanguageSelector({ t, i18n }) {
+function LanguageSelector() {
+  const { i18n } = useTranslation();
   const [value, setValue] = useState(i18n.language);
 
   const handleChange = (event) => {
@@ -11,19 +13,20 @@ function LanguageSelector({ t, i18n }) {
   };
 
   return (
-    <FormControl>
-      <InputLabel id='select-languages-label' shrink>{t('language')}</InputLabel>
-      <Select
-        labelId='select-languages-label'
-        id='select-language'
-        value={value}
-        onChange={handleChange}
-        IconComponent={TranslateIcon}
-      >
-        <MenuItem value='en'>English</MenuItem>
-        <MenuItem value='vi'>Tiếng Việt</MenuItem>
-      </Select>
-    </FormControl>
+    <select
+      style={{
+        border: 'none',
+        fontSize: '16px',
+        color: 'inherit',
+        outline: 'none',
+        backgroundColor: 'inherit',
+      }}
+      value={value}
+      onChange={handleChange}
+    >
+      <option value='en'>ENG</option>
+      <option value='vi'>VIE</option>
+    </select>
   );
 }
 

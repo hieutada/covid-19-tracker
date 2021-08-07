@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 CountrySelector.propTypes = {
   value: PropTypes.string,
@@ -14,7 +15,9 @@ CountrySelector.propTypes = {
   countries: PropTypes.array,
 };
 
-function CountrySelector({ value, handleOnChange, countries, t }) {
+function CountrySelector({ value, handleOnChange, countries }) {
+  const {t} = useTranslation();
+
   const countriesList = countries.sort((a, b) =>
     a.Country.localeCompare(b.Country)
   );

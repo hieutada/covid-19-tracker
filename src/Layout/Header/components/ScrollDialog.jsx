@@ -5,10 +5,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { ListItem, ListItemText } from '@material-ui/core';
+import { Container, ListItem, ListItemText } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 export default function ScrollDialog() {
   const [open, setOpen] = React.useState(false);
+  // const { t } = useTranslation();
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -42,13 +44,17 @@ export default function ScrollDialog() {
         aria-describedby='scroll-dialog-description'
         maxWidth='md'
       >
-        <DialogTitle id='scroll-dialog-title'>Subscribe</DialogTitle>
+        <DialogTitle id='scroll-dialog-title'>
+          {'Các chủng loại vaccine'}
+        </DialogTitle>
+
         <DialogContent dividers={true}>
           <DialogContentText
             id='scroll-dialog-description'
             ref={descriptionElementRef}
             tabIndex={-1}
           >
+            <Container>Đang cập nhật</Container>
           </DialogContentText>
         </DialogContent>
       </Dialog>

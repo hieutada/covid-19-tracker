@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DiseaseColors } from '../../constants';
 import HighlightCard from './components/HighlightCard';
 
@@ -10,7 +11,8 @@ Highlight.propTypes = {
   report: PropTypes.object,
 };
 
-function Highlight({ t, report }) {
+function Highlight({ report }) {
+  const { t } = useTranslation();
   const [dataCard, setDataCard] = useState([]);
 
   useEffect(() => {

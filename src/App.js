@@ -19,12 +19,15 @@ function App() {
         <Route path='/' exact>
           <HomePage />
         </Route>
+
         <Route path='/world' exact>
           <WorldPage />
         </Route>
+
         <Route path='/vietnam' exact>
           <VietNamPage />
         </Route>
+
         <Route>
           <NotFoundPage />
         </Route>

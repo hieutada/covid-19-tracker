@@ -5,6 +5,7 @@ import CountryInfo from './components/CountryInfo';
 import PieChart from './components/PieChart';
 import { useState } from 'react';
 import roundTo from 'round-to';
+import { useTranslation } from 'react-i18next';
 
 const useStyle = makeStyles((theme) => ({
   info: {
@@ -17,7 +18,8 @@ Overview.propTypes = {
   report: PropTypes.object,
 };
 
-function Overview({ t, report }) {
+function Overview({ report }) {
+  const { t } = useTranslation();
   const classes = useStyle();
   const [dataChart, setDataChart] = useState([]);
 

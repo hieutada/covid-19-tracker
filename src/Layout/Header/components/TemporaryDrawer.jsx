@@ -53,10 +53,7 @@ export default function TemporaryDrawer() {
           <ListItemText primary='Các biến thể Corona' />
         </ListItem>
 
-        <ListItem button key={'vaccin'}>
-          <ListItemText primary='Các chủng loại vaccine' />
-        </ListItem>
-      <ScrollDialog />
+        <ScrollDialog />
       </List>
     </div>
   );

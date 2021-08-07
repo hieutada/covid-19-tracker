@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getHistoryByCountry } from '../../../apis';
 import { DiseaseColors } from '../../../constants';
 
@@ -53,7 +54,8 @@ const generateOptions = (title, categories, series) => {
   };
 };
 
-function LineChart({ t, slug }) {
+function LineChart({ slug }) {
+  const { t } = useTranslation();
   const [options, setOptions] = useState({});
   const [reportType, setReportType] = useState('30');
 

@@ -1,41 +1,59 @@
 import {
   AppBar,
+  Box,
   Container,
+  Divider,
   makeStyles,
   Toolbar,
   Typography,
 } from '@material-ui/core';
 import React from 'react';
+import LanguageSelector from '../../components/LanguageSelector';
+import { MainColors } from '../../constants';
 import NavBar from './NavBar';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: 'rgb(244, 244, 244)',
-    boxShadow: 'none',
+  topBox: {
+    backgroundColor: MainColors.WhiteSmoke,
+    color: MainColors.PaleVioletRed,
   },
 
-  menuButton: {
-    marginRight: theme.spacing(2),
+  topDiv: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignContent: 'center',
+  },
+
+  rootBar: {
+    flexGrow: 1,
+    backgroundColor: MainColors.WhiteSmoke,
+    boxShadow: 'none',
+    position: 'static',
   },
 
   title: {
-    // flexGrow: 1,
     color: '#008B8B',
-  },
-
-  link: {
-    color: '#FFFFF0',
-    textDecoration: 'none',
   },
 }));
 
 function Header(props) {
   const classes = useStyles();
-  
+
   return (
     <>
-      <AppBar className={classes.root} position='static'>
+      <Box className={classes.topBox}>
+        <Container>
+          <div className={classes.topDiv}>
+            <Typography style={{ flexGrow: 1 }}>Hotline: 19009095</Typography>
+            <LanguageSelector />
+          </div>
+        </Container>
+      </Box>
+
+      <Divider />
+
+      {/* Bar 1 */}
+      <AppBar className={classes.rootBar}>
         <Container>
           <Toolbar disableGutters={true}>
             <Typography variant='h4' className={classes.title}>
@@ -52,6 +70,8 @@ function Header(props) {
           </Toolbar>
         </Container>
       </AppBar>
+
+      {/* Bar 2 */}
       <NavBar />
     </>
   );
