@@ -1,14 +1,12 @@
 import {
   IconButton,
   ListItem,
-  ListItemText,
-  Typography,
+  ListItemText
 } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Close } from '@material-ui/icons';
-import image_en from 'assets/images/vaccinces_compare_en.png';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
