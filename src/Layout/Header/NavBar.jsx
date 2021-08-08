@@ -39,7 +39,7 @@ function NavBar() {
             <Button color='inherit'>{t('home').toUpperCase()}</Button>
           </NavLink>
 
-          <NavLink className={classes.link} to='/'>
+          <NavLink className={classes.link} to='/news'>
             <Button color='inherit'>{t('news').toUpperCase()}</Button>
           </NavLink>
 

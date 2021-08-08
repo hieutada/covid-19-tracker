@@ -1,9 +1,7 @@
-import { Button, IconButton, Typography } from '@material-ui/core';
+import { IconButton, Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
 import { ArrowBackIos, Menu } from '@material-ui/icons';
 import { vaccine_article, variants_corona_article } from 'assets/article';
@@ -58,14 +56,6 @@ export default function TemporaryDrawer() {
             // onClick={toggleDrawer(false)}
             // onKeyDown={toggleDrawer(false)}
           >
-            {/* <List>
-              <ListItem button key={'headItem'}>
-                <ListItemText primary={t('about').toUpperCase()} />
-                <Button size='small'>
-                  <ArrowBackIos />
-                </Button>
-              </ListItem>
-            </List> */}
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <Typography
                 component='span'

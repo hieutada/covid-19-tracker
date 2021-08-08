@@ -1,8 +1,17 @@
-import { Card, CardContent, Container } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  Typography,
+  Paper,
+  FormHelperText,
+} from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getReportOnWorld } from '../../apis';
 import { DiseaseColors, MainColors } from '../../constants';
+import WorldCard from './components/WorldCard';
 
 function WorldPage(props) {
   const { t } = useTranslation();
@@ -10,42 +19,52 @@ function WorldPage(props) {
 
   useEffect(() => {
     getReportOnWorld().then((res) => {
-      console.log(res);
       setData(res.data);
     });
   }, []);
 
   return (
-    <Container>
-      <div style={{}}></div>
-      <Card>
-        <CardContent>
-          {t('total cases')}: {data.cases} + {data.todayCases}
-        </CardContent>
-
-        <div
-          style={{
-            backgroundColor: DiseaseColors.CASES,
-            color: MainColors.White,
-            border: '2px',
-            borderRadius: '5px',
-            margin: '0px 15px 15px 15px',
-            height: '30px',
-            textAlign: 'center',
-          }}
-        >
-          SỐ CA MẮC
-        </div>
-      </Card>
-      <p>
-        {t('active')}: {data.active}
-      </p>
-      <p>
-        {t('recovered')}: {data.recovered} + {data.todayRecovered}
-      </p>
-      <p>
-        {t('deaths')}: {data.deaths} + {data.todayDeaths}
-      </p>
+    <Container >
+      <Grid container spacing={2} style={{marginTop: '8px'}}>
+        <Grid item container xs={12} md={6} spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <WorldCard
+              title={t('total cases')}
+              number={data.cases}
+              sub={data.todayCases}
+              color={DiseaseColors.CASES}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <WorldCard
+              title={t('active')}
+              number={data.active}
+              sub={''}
+              color={DiseaseColors.ACTIVE}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <WorldCard
+              title={t('recovered')}
+              number={data.recovered}
+              sub={data.todayRecovered}
+              color={DiseaseColors.RECOVERED}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <WorldCard
+              title={t('deaths')}
+              number={data.deaths}
+              sub={data.todayDeaths}
+              color={DiseaseColors.DEATHS}
+            />
+          </Grid>
+        </Grid>
+        {/* --- */}
+        <Grid item container xs={12} lg={6}>
+          
+        </Grid>
+      </Grid>
     </Container>
   );
 }

@@ -9,7 +9,7 @@ export const vaccine_article = `<div class="journal-content-article">
     ><img
       alt=""
       src="https://moh.gov.vn/documents/174521/987201/2.8+V%E1%BA%AFc+xin.jpg/37c44a0f-b511-446f-a490-6e82651738d2?t=1627910046213"
-      style="height: 360px; width: 600px"
+      style="width: 100%"
   /></span>
 </h2>
 <h2 align="center" style="text-align: center" class="text-change-size">
@@ -51,7 +51,7 @@ export const vaccine_article = `<div class="journal-content-article">
     ><img
       alt=""
       src="https://moh.gov.vn/documents/174521/987201/2.8+V%E1%BA%AFc+xin+1.jpg/6a452e44-f469-4942-a376-5909361b1dd3?t=1627910085598"
-      style="height: 315px; width: 600px"
+      style="width: 100%"
   /></span>
 </h2>
 <h2 align="center" style="text-align: center" class="text-change-size">
@@ -85,7 +85,7 @@ export const vaccine_article = `<div class="journal-content-article">
     ><img
       alt=""
       src="https://moh.gov.vn/documents/174521/987201/2.8+V%E1%BA%AFc+xin+3.jpg/ec6b495e-7a72-4a65-9c6f-7838cdf0e120?t=1627910128949"
-      style="height: 400px; width: 600px"
+      style="width: 100%"
   /></span>
 </h2>
 <h2 align="center" style="text-align: center" class="text-change-size">
@@ -128,7 +128,7 @@ export const vaccine_article = `<div class="journal-content-article">
     ><img
       alt=""
       src="https://moh.gov.vn/documents/174521/987201/2.8+V%E1%BA%AFc+xin03jpg.jpg/e9f5a3ff-31db-4146-993f-90ca1c1e300e?t=1627910168116"
-      style="height: 400px; width: 600px"
+      style="width: 100%"
   /></span>
 </h2>
 <h2 align="center" style="text-align: center" class="text-change-size">
@@ -161,7 +161,7 @@ export const vaccine_article = `<div class="journal-content-article">
     ><img
       alt=""
       src="https://moh.gov.vn/documents/174521/987201/2.8+V%E1%BA%AFc+xin05jpg.jpg/3123ea8a-a740-4148-a54d-82862261bac4?t=1627910206458"
-      style="height: 328px; width: 600px"
+      style="width: 100%"
   /></span>
 </h2>
 <h2 align="center" style="text-align: center" class="text-change-size">
@@ -191,7 +191,7 @@ export const vaccine_article = `<div class="journal-content-article">
     ><img
       alt=""
       src="https://moh.gov.vn/documents/174521/987201/2.8+V%E1%BA%AFc+xin06jpg.jpg.png/d4adc9ee-4204-4ff9-bbe9-6e40679a1ae0?t=1627910215169"
-      style="height: 335px; width: 600px"
+      style="width: 100%"
   /></span>
 </h2>
 <h2 align="center" style="text-align: center" class="text-change-size">

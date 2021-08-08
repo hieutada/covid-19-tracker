@@ -1,38 +1,47 @@
 import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
+import { MainColors } from '../../../constants';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import CountUp from 'react-countup';
 
-const useStyles = makeStyles((theme) => ({
-  wrapper: (props) => ({ borderLeft: `5px solid ${props.style.color}` }),
-  title: (props) => ({
-    fontSize: 18,
-    marginBottom: 5,
-    color: props.style.color,
+const useStyle = makeStyles((theme) => ({
+  root: {
+    textAlign: 'center',
+  },
+
+  content: {},
+
+  sub: {},
+
+  title: ({ color }) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '8px 0px',
+    margin: '0px 20px 20px 20px',
+    backgroundColor: color,
+    color: MainColors.White,
+    border: '2px solid rounded',
+    borderRadius: '15px',
   }),
-  count: { fontWeight: 'bold', fontSize: 18 },
 }));
 
-HighlightCard.propTypes = {
-  summaryField: PropTypes.object,
-};
-
-function HighlightCard({ summaryField }) {
-  const { title, count, style } = summaryField;
-  const classes = useStyles({ style });
+function WorldCard({ title, number, sub, color }) {
+  const classes = useStyle({ color });
+  const { t } = useTranslation();
 
   return (
-    <Card>
-      <CardContent className={classes.wrapper}>
-        <Typography component='p' variant='body2' className={classes.title}>
-          {title}
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography variant='h4'>
+          <CountUp end={number} separator=',' duration={2} />
         </Typography>
-        <Typography variant='body2' component='span' className={classes.count}>
-          <CountUp end={count} separator=' ' duration={2} />
-        </Typography>
+        <Typography variant='p'>{sub ? `Hôm nay: +${sub}` : '_'}</Typography>
       </CardContent>
+      <div className={classes.title}>
+        <Typography>{t(title).toUpperCase()}</Typography>
+      </div>
     </Card>
   );
 }
 
-export default HighlightCard;
+export default WorldCard;
