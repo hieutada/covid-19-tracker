@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getReportOnWorld } from '../../apis';
 import { DiseaseColors } from '../../constants';
-import WorldCard from './components/WorldCard';
+// import WorldCard from './components/WorldCard';
 
 function WorldPage(props) {
   const { t } = useTranslation();
