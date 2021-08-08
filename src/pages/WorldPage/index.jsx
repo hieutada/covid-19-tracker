@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getReportOnWorld } from '../../apis';
 import { DiseaseColors } from '../../constants';
-// import WorldCard from './components/WorldCard';
+import WorldCard from './components/WorldCard';
 
 function WorldPage(props) {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ function WorldPage(props) {
     <Container >
       <Grid container spacing={2} style={{marginTop: '8px'}}>
         <Grid item container xs={12} md={6} spacing={2}>
-          {/* <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <WorldCard
               title={t('total cases')}
               number={data.cases}
@@ -53,7 +53,7 @@ function WorldPage(props) {
               sub={data.todayDeaths}
               color={DiseaseColors.DEATHS}
             />
-          </Grid> */}
+          </Grid>
         </Grid>
         {/* --- */}
         <Grid item container xs={12} lg={6}>
