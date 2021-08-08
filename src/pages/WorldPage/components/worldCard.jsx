@@ -35,7 +35,7 @@ function WorldCard({ title, number, sub, color }) {
         <Typography variant='h4'>
           <CountUp end={number} separator=',' duration={2} />
         </Typography>
-        <Typography variant='p'>{sub ? `Hôm nay: +${sub}` : '_'}</Typography>
+        <Typography variant='p'>{sub ? `Today: +${sub}` : '_'}</Typography>
       </CardContent>
       <div className={classes.title}>
         <Typography>{t(title).toUpperCase()}</Typography>
