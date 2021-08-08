@@ -1,13 +1,15 @@
-import { IconButton } from '@material-ui/core';
+import { Button, IconButton, Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
-import { Menu } from '@material-ui/icons';
-import React from 'react';
-import ScrollDialog from './ScrollDialog';
+import { ArrowBackIos, Menu } from '@material-ui/icons';
+import { vaccine_article, variants_corona_article } from 'assets/article';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import DialogItem from './DialogItem';
 
 const useStyles = makeStyles({
   list: {
@@ -19,8 +21,9 @@ const useStyles = makeStyles({
 });
 
 export default function TemporaryDrawer() {
+  const { t } = useTranslation();
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -33,30 +36,13 @@ export default function TemporaryDrawer() {
     setOpen(open);
   };
 
-  const list = () => (
-    <div
-      className={classes.list}
-      role='presentation'
-      // onClick={toggleDrawer(false)}
-      // onKeyDown={toggleDrawer(false)}
-    >
-      <List>
-        <ListItem button key={'info'}>
-          <ListItemText primary='THÔNG TIN' />
-        </ListItem>
-      </List>
-
-      <Divider />
-
-      <List>
-        <ListItem button key={'vaccin'}>
-          <ListItemText primary='Các biến thể Corona' />
-        </ListItem>
-
-        <ScrollDialog />
-      </List>
-    </div>
-  );
+  const list = [
+    {
+      title: 'variants_corona',
+      content: variants_corona_article,
+    },
+    { title: 'vaccines_covid', content: vaccine_article },
+  ];
 
   return (
     <div>
@@ -66,7 +52,41 @@ export default function TemporaryDrawer() {
         </IconButton>
 
         <Drawer anchor={'left'} open={open} onClose={toggleDrawer(false)}>
-          {list()}
+          <div
+            className={classes.list}
+            role='presentation'
+            // onClick={toggleDrawer(false)}
+            // onKeyDown={toggleDrawer(false)}
+          >
+            {/* <List>
+              <ListItem button key={'headItem'}>
+                <ListItemText primary={t('about').toUpperCase()} />
+                <Button size='small'>
+                  <ArrowBackIos />
+                </Button>
+              </ListItem>
+            </List> */}
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Typography
+                component='span'
+                variant='h6'
+                style={{ flexGrow: 1, paddingLeft: '14px' }}
+              >
+                {t('about').toUpperCase()}
+              </Typography>
+              <IconButton onClick={toggleDrawer(false)}>
+                <ArrowBackIos />
+              </IconButton>
+            </div>
+
+            <Divider />
+
+            <List>
+              {list.map((item, idx) => (
+                <DialogItem item={item} index={idx} />
+              ))}
+            </List>
+          </div>
         </Drawer>
       </React.Fragment>
     </div>

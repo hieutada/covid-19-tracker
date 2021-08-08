@@ -18,5 +18,14 @@
   "all": "tất cả",
   "30 days": "30 ngày",
   "7 days": "7 ngày",
-  "title_line_chart": "Lịch sử ghi nhận Covid-19"
+  "title_line_chart": "Lịch sử ghi nhận Covid-19",
+
+  "variants_corona": "Các biến thể virus Corona",
+  "vaccines_covid": "Các vác-xin Covid-19",
+  "about": "thông tin",
+
+  "Vietnam": "Việt Nam",
+  "World": "thế giới",
+  "news": "tin tức",
+  "home": "trang chủ"
 }

@@ -1,0 +1,1 @@
+export const variants_corona_article = `<img src='https://image.infographics.vn/media//730/2021/5/30/2021-05-29_covid19-vn-8-bienthe_05_h84_1.jpg' alt='' width='100%' />`

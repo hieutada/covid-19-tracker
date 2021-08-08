@@ -1,11 +1,11 @@
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
+import { DiseaseColors } from '../../../constants';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getHistoryByCountry } from '../../../apis';
-import { DiseaseColors } from '../../../constants';
 
 LineChart.propTypes = {
   slug: PropTypes.string,
@@ -99,7 +99,7 @@ function LineChart({ slug }) {
         exclusive
         onChange={reportTypeChange}
         size='small'
-        style={{marginTop: 10, marginLeft: 10}}
+        style={{ marginTop: 10, marginLeft: 10 }}
       >
         <ToggleButton value='all' aria-label='all'>
           {t('all')}

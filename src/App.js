@@ -1,12 +1,12 @@
 import '@fontsource/roboto';
+import Footer from 'Layout/Footer';
 import 'moment/locale/vi';
-import Footer from './Layout/Footer';
+import VietNamPage from 'pages/VietNamPage';
+import { Route, Switch } from 'react-router-dom';
 import Header from './Layout/Header';
 import HomePage from './pages/HomePage';
-import WorldPage from './pages/WorldPage';
-import VietNamPage from './pages/VietNamPage';
 import NotFoundPage from './pages/NotFoundPage';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import WorldPage from './pages/WorldPage';
 
 // moment.locale('vi')
 

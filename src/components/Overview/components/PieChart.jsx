@@ -1,8 +1,8 @@
+import { DiseaseColors } from '../../../constants';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { DiseaseColors } from '../../../constants';
 
 PieChart.propTypes = {
   dataChart: PropTypes.array,
@@ -16,7 +16,7 @@ const generateOptions = (data) => {
     title: {
       text: null,
     },
-    
+
     accessibility: {
       announceNewData: {
         enabled: true,
@@ -30,15 +30,10 @@ const generateOptions = (data) => {
       series: {
         dataLabels: {
           enabled: true,
-          format: '{point.name}<br/><span style="font-size:18px">{point.y:.1f}%</span>',
+          format:
+            '{point.name}<br/><span style="font-size:18px">{point.y:.1f}%</span>',
         },
       },
-    },
-
-    tooltip: {
-      headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-      pointFormat:
-        '(<span style="color:{point.color}">{point.name}</span>: <b>{point.y}%</b><br/>)',
     },
 
     colors: [
@@ -49,10 +44,15 @@ const generateOptions = (data) => {
 
     series: [
       {
-        name: 'Tỉ lệ',
-        colorByPoint: true,
+        type: 'pie',
+        name: 'Ratio',
         innerSize: '60%',
         data: [...data],
+        tooltip: {
+          headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+          pointFormat:
+            '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}%</b><br/>',
+        },
       },
     ],
   };

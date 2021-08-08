@@ -1,10 +1,10 @@
 import { Grid } from '@material-ui/core';
+import { DiseaseColors } from '../../constants';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { DiseaseColors } from '../../constants';
 import HighlightCard from './components/HighlightCard';
 
 Highlight.propTypes = {

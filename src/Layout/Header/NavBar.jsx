@@ -6,6 +6,7 @@ import {
   Toolbar,
 } from '@material-ui/core';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { MainColors } from '../../constants';
 import TemporaryDrawer from './components/TemporaryDrawer';
@@ -24,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NavBar(props) {
+function NavBar() {
+  const {t} = useTranslation()
   const classes = useStyles();
 
   return (
@@ -34,19 +36,19 @@ function NavBar(props) {
           <TemporaryDrawer />
 
           <NavLink className={classes.link} to='/'>
-            <Button color='inherit'>TRANG CHỦ</Button>
+            <Button color='inherit'>{t('home').toUpperCase()}</Button>
           </NavLink>
 
           <NavLink className={classes.link} to='/'>
-            <Button color='inherit'>DIỄN BIẾN</Button>
+            <Button color='inherit'>{t('news').toUpperCase()}</Button>
           </NavLink>
 
           <NavLink className={classes.link} to='/world'>
-            <Button color='inherit'>THẾ GIỚI</Button>
+            <Button color='inherit'>{t('world').toUpperCase()}</Button>
           </NavLink>
 
           <NavLink className={classes.link} to='/vietnam'>
-            <Button color='inherit'>VIỆT NAM</Button>
+            <Button color='inherit'>{t('Vietnam').toUpperCase()}</Button>
           </NavLink>
         </Toolbar>
       </Container>

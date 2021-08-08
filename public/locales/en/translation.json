@@ -18,5 +18,14 @@
   "all": "all",
   "30 days": "30 days",
   "7 days": "7 days",
-  "title_line_chart": "Recorded history of Covid-19"
+  "title_line_chart": "Recorded history of Covid-19",
+
+  "variants_corona": "Variants of Corona virus",
+  "vaccines_covid": "Vaccines for Covid-19",
+  "about": "about",
+
+  "Vietnam": "Vietnam",
+  "World": "world",
+  "news": "news",
+  "home": "home"
 }
