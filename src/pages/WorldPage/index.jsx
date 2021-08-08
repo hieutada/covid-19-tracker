@@ -1,16 +1,11 @@
 import {
-  Card,
-  CardContent,
   Container,
-  Grid,
-  Typography,
-  Paper,
-  FormHelperText,
+  Grid
 } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getReportOnWorld } from '../../apis';
-import { DiseaseColors, MainColors } from '../../constants';
+import { DiseaseColors } from '../../constants';
 import WorldCard from './components/WorldCard';
 
 function WorldPage(props) {

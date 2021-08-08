@@ -1,13 +1,13 @@
 import '@fontsource/roboto';
-import Footer from 'Layout/Footer';
-import Header from 'Layout/Header';
+import Footer from './Layout/Footer';
+import Header from './Layout/Header';
 import 'moment/locale/vi';
-import HomePage from 'pages/HomePage';
-import NewsPage from 'pages/NewsPage';
-import NotFoundPage from 'pages/NotFoundPage';
-import VietNamPage from 'pages/VietNamPage';
-import WorldPage from 'pages/WorldPage';
 import { Route, Switch } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import NewsPage from './pages/NewsPage';
+import WorldPage from './pages/WorldPage';
+import VietNamPage from './pages/VietNamPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // moment.locale('vi')
 

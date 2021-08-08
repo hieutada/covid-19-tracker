@@ -4,7 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
 import { ArrowBackIos, Menu } from '@material-ui/icons';
-import { vaccine_article, variants_corona_article } from 'assets/article';
+import { vaccine_article, variants_corona_article } from '../../../assets/article';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DialogItem from './DialogItem';
