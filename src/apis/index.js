@@ -32,5 +32,5 @@ export const getVaccineReport = () =>
 
 export const getVnExpressNews = () =>
   axios.get(
-    'https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=50&page=1&data_select=title,share_url,thumbnail_url,lead,publish_time'
+    'https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=12&page=1&data_select=title,share_url,thumbnail_url,lead,publish_time'
   );
