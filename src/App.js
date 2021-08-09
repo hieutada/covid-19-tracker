@@ -1,6 +1,6 @@
 import '@fontsource/roboto';
-// import Footer from './layout/Footer';
-// import Header from './layout/Header';
+import Footer from './layout/Footer';
+import Header from './layout/Header';
 import 'moment/locale/vi';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
@@ -14,7 +14,7 @@ import NotFoundPage from './pages/NotFoundPage';
 function App() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
 
       <Switch>
         <Route path='/' exact>
@@ -38,7 +38,7 @@ function App() {
         </Route>
       </Switch>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
