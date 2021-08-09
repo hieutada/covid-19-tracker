@@ -34,3 +34,6 @@ export const getVnExpressNews = (page) =>
   axios.get(
     `https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=12&page=${page}&data_select=title,share_url,thumbnail_url,lead,publish_time`
   );
+
+export const getNcovReport = () =>
+  axios.get('https://ncovi.vnpt.vn/thongtindichbenh_v2');
