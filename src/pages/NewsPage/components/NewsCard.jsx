@@ -12,21 +12,18 @@ import Link from '@material-ui/core/Link';
 const useStyles = makeStyles({
   root: {
     // maxWidth: 345,
-    height: '100%'
+    height: '100%',
   },
   media: {
     height: '200px',
   },
 });
 
-export default function NewsCard({ url, title, lead, thumbnail }) {
+export default function NewsCard({ url, title, lead, thumbnail, timeAgo }) {
   const classes = useStyles();
 
   return (
-    <Link
-      style={{ textDecoration: 'none' }}
-      href={url}
-    >
+    <Link style={{ textDecoration: 'none' }} href={url}>
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
@@ -48,7 +45,7 @@ export default function NewsCard({ url, title, lead, thumbnail }) {
               component='p'
               style={{ marginTop: '8px' }}
             >
-              VnExpres - 13 giờ trước
+              VnExpres - {timeAgo} trước
             </Typography>
           </CardContent>
         </CardActionArea>

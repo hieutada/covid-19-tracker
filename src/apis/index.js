@@ -30,7 +30,7 @@ export const getVaccineReport = () =>
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=1'
   );
 
-export const getVnExpressNews = () =>
+export const getVnExpressNews = (page) =>
   axios.get(
-    'https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=12&page=1&data_select=title,share_url,thumbnail_url,lead,publish_time'
+    `https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=12&page=${page}&data_select=title,share_url,thumbnail_url,lead,publish_time`
   );
