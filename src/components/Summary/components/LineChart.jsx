@@ -14,6 +14,7 @@ LineChart.propTypes = {
 const generateOptions = (title, categories, series) => {
   return {
     chart: {
+      type: 'line',
       height: 500,
     },
 

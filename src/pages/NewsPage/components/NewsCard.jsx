@@ -23,7 +23,7 @@ export default function NewsCard({ url, title, lead, thumbnail, timeAgo }) {
   const classes = useStyles();
 
   return (
-    <Link style={{ textDecoration: 'none' }} href={url}>
+    <Link style={{ textDecoration: 'none' }} href={url} target='_blank'> 
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia

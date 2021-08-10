@@ -30,14 +30,14 @@ function NewsPage() {
 
       <Box marginY={2}>
         <Grid container spacing={2}>
-          {list.map((article) => (
-            <Grid item xs={12} sm={6} md={4} lg={3}>
+          {list.map((article, idx) => (
+            <Grid item key={idx} xs={12} sm={6} md={4} lg={3}>
               <NewsCard
                 url={article.share_url}
                 title={article.title}
                 lead={article.lead}
                 thumbnail={article.thumbnail_url}
-                timeAgo={timeSince(article.publish_time)}
+                timeAgo={timeSince(article.publish_time, 'vi')}
               />
             </Grid>
           ))}

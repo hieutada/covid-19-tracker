@@ -73,7 +73,7 @@ export default function TemporaryDrawer() {
 
             <List>
               {list.map((item, idx) => (
-                <DialogItem item={item} index={idx} />
+                <DialogItem item={item} key={idx} />
               ))}
             </List>
           </div>

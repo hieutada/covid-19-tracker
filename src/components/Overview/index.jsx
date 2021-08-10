@@ -9,6 +9,9 @@ import { useTranslation } from 'react-i18next';
 
 const useStyle = makeStyles((theme) => ({
   info: {
+    display: 'flex',
+    alignItem: 'center',
+    justifyContent: 'center',
     textAlign: 'center',
     height: '100%',
   },

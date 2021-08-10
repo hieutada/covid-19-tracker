@@ -26,16 +26,17 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 function WorldCard({ title, number, sub, color }) {
+  console.log(sub)
   const classes = useStyle({ color });
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography variant='h4'>
-          <CountUp end={number} separator=',' duration={2} />
+          <CountUp end={number} separator={i18n.language==='vi' ? '.' : ','} duration={2} />
         </Typography>
-        <Typography variant='p'>{sub ? `Today: +${sub}` : '_'}</Typography>
+        <Typography variant="subtitle1">{sub ? `${t('today')}: +${sub.toLocaleString(i18n.language)}` : '_'}</Typography>
       </CardContent>
       <div className={classes.title}>
         <Typography>{t(title).toUpperCase()}</Typography>

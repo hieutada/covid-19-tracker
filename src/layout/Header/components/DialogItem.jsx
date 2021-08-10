@@ -10,7 +10,7 @@ import { Close } from '@material-ui/icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function DialogItem({ item, index }) {
+export default function DialogItem({ item }) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -35,7 +35,7 @@ export default function DialogItem({ item, index }) {
 
   return (
     <>
-      <ListItem button key={index} onClick={handleClickOpen}>
+      <ListItem button onClick={handleClickOpen}>
         <ListItemText primary={t(item.title)} />
       </ListItem>
 
