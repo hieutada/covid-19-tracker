@@ -2,10 +2,10 @@ import { Container } from '@material-ui/core';
 import React, { useCallback, useEffect, useState } from 'react';
 import { getApiCountries, getReportByCountry } from '../../apis';
 import CountrySelector from '../../components/CountrySelector';
-import Highlight from '../../components/Highlight';
 import LanguageSelector from '../../components/LanguageSelector';
 import Overview from '../../components/Overview';
 import Summary from '../../components/Summary';
+import Highlight from './components/Highlight';
 
 function HomePage() {
   const [countries, setCountries] = useState([]);

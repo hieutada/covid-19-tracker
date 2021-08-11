@@ -1,11 +1,11 @@
 import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
-import { MainColors } from '../../../constants';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import CountUp from 'react-countup';
-import firstUpperCase from '../../../utils/firstUpperCase';
+import { useTranslation } from 'react-i18next';
+import { MainColors } from '../../constants';
+import firstUpperCase from '../../utils//firstUpperCase';
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles({
   root: {
     textAlign: 'center',
   },
@@ -24,9 +24,9 @@ const useStyle = makeStyles((theme) => ({
     border: '2px solid rounded',
     borderRadius: '15px',
   }),
-}));
+});
 
-function WorldCard({ title, number, sub, color }) {
+function VerticalCard({ title, number, sub, color }) {
   const classes = useStyle({ color });
   const { t, i18n } = useTranslation();
 
@@ -34,9 +34,19 @@ function WorldCard({ title, number, sub, color }) {
     <Card className={classes.root}>
       <CardContent>
         <Typography variant='h4'>
-          <CountUp end={number} separator={i18n.language==='vi' ? '.' : ','} duration={2} />
+          <CountUp
+            end={number}
+            separator={i18n.language === 'vi' ? '.' : ','}
+            duration={2}
+          />
         </Typography>
-        <Typography variant="subtitle1">{sub ? `${firstUpperCase(t('today'))}: +${sub.toLocaleString(i18n.language)}` : '_'}</Typography>
+        <Typography variant='subtitle1'>
+          {sub
+            ? `${firstUpperCase(t('today'))}: +${sub.toLocaleString(
+                i18n.language
+              )}`
+            : '_'}
+        </Typography>
       </CardContent>
       <div className={classes.title}>
         <Typography>{t(title).toUpperCase()}</Typography>
@@ -45,4 +55,4 @@ function WorldCard({ title, number, sub, color }) {
   );
 }
 
-export default WorldCard;
+export default VerticalCard;

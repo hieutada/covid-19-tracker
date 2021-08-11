@@ -1,71 +1,52 @@
-import { Box, Container, Grid, Paper, Typography } from '@material-ui/core';
+import { Container, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getReportOnWorld } from '../../apis';
-import BarChart from '../../components/Charts/BarChart';
+import { useHistory } from 'react-router-dom';
+import { getNcovReport, getReportOnWorld } from '../../apis';
+import Top5BarChart from '../../components/Charts/Top5BarChart';
 import WorldTable from '../../components/Tables/WorldTable';
 import TitleDivider from '../../components/TitleDivider';
-import { DiseaseColors } from '../../constants';
-import WorldCard from './components/WorldCard';
+import WorldHiglight from './components/WorldHiglight';
 
-function WorldPage(props) {
+const useStyle = makeStyles({
+  hl_area: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+  },
+});
+
+function WorldPage() {
   const { t } = useTranslation();
-  const [data, setData] = useState({});
+  const history = useHistory();
+  const classes = useStyle();
+
+  const [cardsData, setCardsData] = useState({});
+  const [tableData, setTableData] = useState([]);
+  const [top5, setTop5] = useState([]);
 
   useEffect(() => {
-    getReportOnWorld().then((res) => {
-      setData(res.data);
-    });
+    getReportOnWorld()
+      .then((res) => setCardsData(res.data))
+      .catch((err) => history.push('/'));
+
+    getNcovReport()
+      .then((res) => {
+        const world = res.data.data['TG'];
+        const top = world.slice(0, 5);
+        
+        setTableData(world);
+        setTop5(top);
+      })
+      .catch((err) => history.push('/'));
   }, []);
 
   return (
     <Container>
       <Grid container spacing={2} style={{ marginTop: '8px' }}>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100%',
-          }}
-        >
+        <Grid item xs={12} md={6} className={classes.hl_area}>
           <TitleDivider variant='left' text='Trên toàn thế giới' />
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <WorldCard
-                title={t('total cases')}
-                number={data.cases}
-                sub={data.todayCases}
-                color={DiseaseColors.CASES}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <WorldCard
-                title={t('active')}
-                number={data.active}
-                sub={''}
-                color={DiseaseColors.ACTIVE}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <WorldCard
-                title={t('recovered')}
-                number={data.recovered}
-                sub={data.todayRecovered}
-                color={DiseaseColors.RECOVERED}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <WorldCard
-                title={t('deaths')}
-                number={data.deaths}
-                sub={data.todayDeaths}
-                color={DiseaseColors.DEATHS}
-              />
-            </Grid>
-          </Grid>
+          <WorldHiglight data={cardsData} />
         </Grid>
         {/* --- */}
         <Grid item xs={12} lg={6}>
@@ -73,7 +54,7 @@ function WorldPage(props) {
             variant='left'
             text='Top 5 quốc gia chịu ảnh hưởng bởi Covid-19'
           />
-          <BarChart />
+          <Top5BarChart data={top5} />
         </Grid>
       </Grid>
 
@@ -81,7 +62,7 @@ function WorldPage(props) {
         variant='left'
         text='Bảng thống kê Covid-19 trên thế giới'
       />
-      <WorldTable />
+      <WorldTable data={tableData} />
     </Container>
   );
 }
