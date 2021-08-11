@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import titleCase from '../../utils/titleCase';
 
 CountrySelector.propTypes = {
   value: PropTypes.string,
@@ -25,7 +26,7 @@ function CountrySelector({ value, handleOnChange, countries }) {
   return (
     <FormControl>
       <InputLabel id='country-select-label' shrink>
-        {t('country_select')}
+        {titleCase(t('country'))}
       </InputLabel>
 
       <Select

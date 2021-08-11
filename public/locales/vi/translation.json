@@ -1,9 +1,10 @@
 {
   "title_app": "SỐ LIỆU COVID-19",
   "language": "Ngôn ngữ",
-  "country_select": "Quốc gia",
+  "country": "quốc gia",
   "country_heper_text": "Lựa chọn quốc gia",
   "total cases": "số ca nhiễm",
+  "confirmed": "đã ghi nhận",
   "active": "đang điều trị",
   "recovered": "hồi phục",
   "deaths": "tử vong",
@@ -19,6 +20,7 @@
   "30 days": "30 ngày",
   "7 days": "7 ngày",
   "today": "hôm nay",
+  "No": "STT",
   "title_line_chart": "Lịch sử ghi nhận Covid-19",
 
   "variants_corona": "Các biến thể virus Corona",
@@ -28,5 +30,7 @@
   "Vietnam": "Việt Nam",
   "world": "thế giới",
   "news": "tin tức",
-  "home": "trang chủ"
+  "home": "trang chủ",
+
+  "rows number": "số hàng"
 }

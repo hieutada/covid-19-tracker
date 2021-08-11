@@ -10,27 +10,33 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { useEffect } from 'react';
 import { getNcovReport } from '../../apis';
+import { useTranslation } from 'react-i18next';
+import titleCase from '../../utils/titleCase';
+import { useHistory } from 'react-router-dom';
 
 const columns = [
   { id: 'top', label: 'No' },
-  { id: 'country', label: 'Country', minWidth: 170 },
+  { id: 'country', label: 'country', minWidth: 170 },
   {
     id: 'confirmed',
-    label: 'Confirmed',
+    label: 'confirmed',
+    align: 'right',
     minWidth: 100,
-    format: (value) => value.toLocaleString('en-US'),
+    format: (value, lang) => value.toLocaleString(lang),
   },
   {
     id: 'recovered',
-    label: 'Recovered',
+    label: 'recovered',
+    align: 'right',
     minWidth: 100,
-    format: (value) => value.toLocaleString('en-US'),
+    format: (value, lang) => value.toLocaleString(lang),
   },
   {
     id: 'deaths',
-    label: 'Deaths',
+    label: 'deaths',
+    align: 'right',
     minWidth: 100,
-    format: (value) => value.toLocaleString('en-US'),
+    format: (value, lang) => value.toLocaleString(lang),
   },
 ];
 
@@ -44,7 +50,11 @@ const useStyles = makeStyles({
 });
 
 export default function WorldTable() {
+  const { t, i18n } = useTranslation();
   const classes = useStyles();
+
+  const history = useHistory();
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [rows, setRows] = useState([]);
@@ -59,16 +69,20 @@ export default function WorldTable() {
   };
 
   useEffect(() => {
-    getNcovReport().then(async (res) => {
-      const data = await res.data.data['TG'].map((country, index) => ({
-        top: index + 1,
-        country: country.province_name,
-        confirmed: country.confirmed,
-        recovered: country.recovered,
-        deaths: country.deaths,
-      }));
-      setRows(data);
-    });
+    try {
+      getNcovReport().then(async (res) => {
+        const data = await res.data.data['TG'].map((country, index) => ({
+          top: index + 1,
+          country: country.province_name,
+          confirmed: country.confirmed,
+          recovered: country.recovered,
+          deaths: country.deaths,
+        }));
+        setRows(data);
+      });
+    } catch (error) {
+      return history.push('/');
+    }
   }, []);
 
   return (
@@ -83,7 +97,7 @@ export default function WorldTable() {
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
                 >
-                  {column.label}
+                  {titleCase(t(column.label))}
                 </TableCell>
               ))}
             </TableRow>
@@ -99,7 +113,7 @@ export default function WorldTable() {
                       return (
                         <TableCell key={column.id} align={column.align}>
                           {column.format && typeof value === 'number'
-                            ? column.format(value)
+                            ? column.format(value, i18n.language)
                             : value}
                         </TableCell>
                       );
@@ -117,6 +131,7 @@ export default function WorldTable() {
         count={rows.length}
         rowsPerPage={rowsPerPage}
         page={page}
+        labelRowsPerPage = {`${t('rows number')}:`}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />

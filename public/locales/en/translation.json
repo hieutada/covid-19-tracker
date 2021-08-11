@@ -1,9 +1,10 @@
 {
   "title_app": "COVID-19 DATA",
   "language": "Language",
-  "country_select": "Country",
+  "country": "country",
   "country_heper_text": "Select country",
   "total cases": "total cases",
+  "confirmed": "confirmed",
   "active": "active",
   "recovered": "recovered",
   "deaths": "deaths",
@@ -19,6 +20,7 @@
   "30 days": "30 days",
   "7 days": "7 days",
   "today": "today",
+  "No": "No",
   "title_line_chart": "Recorded history of Covid-19",
 
   "variants_corona": "Variants of Corona virus",

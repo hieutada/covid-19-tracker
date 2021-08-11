@@ -26,14 +26,31 @@ const generateOptions = (mapData, data, maxLinearColor) => ({
   },
 
   colorAxis: {
-    min: 0,
-    max: maxLinearColor,
-    stops: [
-      [0.05, '#FFC4AA'],
-      [0.1, '#FF8A66'],
-      [0.2, '#FF392B'],
-      [0.3, '#B71525'],
-      [1, '	#7A0826'],
+    dataClasses: [
+      {
+        to: 100,
+        color: '#FFC4AA',
+      },
+      {
+        from: 101,
+        to: 500,
+        color: '#FF8A66',
+      },
+      {
+        from: 501,
+        to: 1000,
+        color: '#FF392B',
+      },
+      {
+        from: 1001,
+        to: 10000,
+        color: '#B71525',
+      },
+      {
+        from: 10001,
+        name: '> 10 000',
+        color: '#7A0826',
+      },
     ],
   },
 
@@ -41,6 +58,7 @@ const generateOptions = (mapData, data, maxLinearColor) => ({
     layout: 'horizontal',
     align: 'center',
     verticalAlign: 'bottom',
+    valueDecimals: 0
   },
 
   series: [
@@ -74,7 +92,6 @@ const HighMaps = ({ mapData }) => {
 
           setOptions(generateOptions(mapData, data, maxLinearColor));
         });
-
       } else {
         const fakeData = mapData.features.map((feature, index) => ({
           name: feature.properties['name'],

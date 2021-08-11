@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { getNcovReport } from '../../apis';
 import { DiseaseColors } from '../../constants';
 import timeSince from '../../utils/timeSince';
+import { useHistory } from 'react-router-dom';
 
 BarChart.propTypes = {};
 
@@ -51,7 +52,7 @@ const generateOptions = (lastUpdate, categories, series) => ({
       },
     },
   },
-  
+
   credits: {
     enabled: false,
   },
@@ -60,26 +61,35 @@ const generateOptions = (lastUpdate, categories, series) => ({
 
 function BarChart(props) {
   const { t } = useTranslation();
+
+  const history = useHistory();
   const [options, setOptions] = useState({});
 
   useEffect(() => {
-    getNcovReport().then(async (res) => {
-      const world = await res.data.data['TG'];
-      const top5 = world.slice(0, 5);
+    try {
+      getNcovReport().then(async (res) => {
+        const world = await res.data.data['TG'];
+        const top5 = world.slice(0, 5);
 
-      const lastUpdate = top5[0].last_update;
-      const categories = top5.map((country) => country.province_name);
-      const series = [
-        {
-          name: t('total cases'),
-          data: top5.map((country) => country.confirmed),
-        },
-        { name: t('recovered'), data: top5.map((country) => country.recovered) },
-        { name: t('deaths'), data: top5.map((country) => country.deaths) },
-      ];
+        const lastUpdate = top5[0].last_update;
+        const categories = top5.map((country) => country.province_name);
+        const series = [
+          {
+            name: t('total cases'),
+            data: top5.map((country) => country.confirmed),
+          },
+          {
+            name: t('recovered'),
+            data: top5.map((country) => country.recovered),
+          },
+          { name: t('deaths'), data: top5.map((country) => country.deaths) },
+        ];
 
-      setOptions(generateOptions(lastUpdate, categories, series));
-    });
+        setOptions(generateOptions(lastUpdate, categories, series));
+      });
+    } catch (error) {
+      return history.push('/');
+    }
   }, []);
 
   return <HighchartsReact highcharts={Highcharts} options={options} />;
