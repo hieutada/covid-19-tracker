@@ -9,7 +9,7 @@ import { getDetailVn } from '../../../apis';
 // Load Highcharts modules
 highchartsMap(Highcharts);
 
-const generateOptions = (mapData, data, maxLinearColor) => ({
+const generateOptions = (mapData, data) => ({
   chart: {
     height: '500px',
   },
@@ -87,10 +87,10 @@ const HighMaps = ({ mapData }) => {
             value: obj.cases,
           }));
 
-          const maxLinearColor =
-            data.reduce((a, b) => a + parseInt(b.value), 0) / data.length;
+          // const maxLinearColor =
+          //   data.reduce((a, b) => a + parseInt(b.value), 0) / data.length;
 
-          setOptions(generateOptions(mapData, data, maxLinearColor));
+          setOptions(generateOptions(mapData, data));
         });
       } else {
         const fakeData = mapData.features.map((feature, index) => ({

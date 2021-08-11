@@ -27,7 +27,6 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 function WorldCard({ title, number, sub, color }) {
-  console.log(sub)
   const classes = useStyle({ color });
   const { t, i18n } = useTranslation();
 
