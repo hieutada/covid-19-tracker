@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavBar() {
-  const {t} = useTranslation()
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (

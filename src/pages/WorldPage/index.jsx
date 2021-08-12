@@ -6,6 +6,7 @@ import { getNcovReport, getReportOnWorld } from '../../apis';
 import Top5BarChart from '../../components/Charts/Top5BarChart';
 import WorldTable from '../../components/Tables/WorldTable';
 import TitleDivider from '../../components/TitleDivider';
+import ContinentsSummary from './components/ContinentsSummary';
 import WorldHiglight from './components/WorldHiglight';
 
 const useStyle = makeStyles({
@@ -57,6 +58,8 @@ function WorldPage() {
           <Top5BarChart data={top5} />
         </Grid>
       </Grid>
+
+      <ContinentsSummary />
 
       <TitleDivider
         variant='left'

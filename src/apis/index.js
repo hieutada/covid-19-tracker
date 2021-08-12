@@ -16,7 +16,6 @@ export const getMapDataOnWorld = () =>
 export const getMapDataOfContinents = () =>
   import('@highcharts/map-collection/custom/world-continents.geo.json');
 
-
 // disease.sh
 
 export const getReportOnWorld = () =>
@@ -35,12 +34,15 @@ export const getVaccineReport = () =>
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=1'
   );
 
-
 // To Vinh Khang collect
+
+export const getWorldDetail = () =>
+  axios.get(
+    'https://api-kent.netlify.app/.netlify/functions/api/global/countries'
+  );
 
 export const getDetailVn = () =>
   axios.get('https://api-kent.netlify.app/.netlify/functions/api/vn');
-
 
 // Newspapers in Vietnam
 
@@ -51,3 +53,6 @@ export const getVnExpressNews = (page) =>
   axios.get(
     `https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=12&page=${page}&data_select=title,share_url,thumbnail_url,lead,publish_time`
   );
+
+export const getTodayProvinces = () =>
+  axios.get('https://api.zingnews.vn/public/v2/corona/getChart?type=province');
