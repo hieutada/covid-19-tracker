@@ -1,12 +1,15 @@
 import { Box, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 CountryInfoCard.propTypes = {
   report: PropTypes.object,
 };
 
-function CountryInfoCard({ t, report }) {
+function CountryInfoCard({ report }) {
+  const { t } = useTranslation();
+
   return (
     <>
       {Object.keys(report).length > 0 ? (
