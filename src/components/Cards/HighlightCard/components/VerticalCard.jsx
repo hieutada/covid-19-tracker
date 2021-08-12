@@ -2,8 +2,8 @@ import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import CountUp from 'react-countup';
 import { useTranslation } from 'react-i18next';
-import { MainColors } from '../../constants';
-import firstUpperCase from '../../utils//firstUpperCase';
+import { MainColors } from '../../../../constants';
+import firstUpperCase from '../../../../utils/firstUpperCase';
 
 const useStyle = makeStyles({
   root: {

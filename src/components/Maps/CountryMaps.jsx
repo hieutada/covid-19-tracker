@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import highchartsMap from 'highcharts/modules/map';
 import { cloneDeep } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
-import { getDetailVn } from '../../../apis';
+import { getDetailVn } from '../../apis';
 
 // Load Highcharts modules
 highchartsMap(Highcharts);
@@ -71,7 +71,7 @@ const generateOptions = (mapData, data) => ({
   ],
 });
 
-const HighMaps = ({ mapData }) => {
+const CountryMaps = ({ mapData }) => {
   const [options, setOptions] = useState({});
   const [mapLoaded, setMapLoaded] = useState(false);
   const chartRef = useRef(null);
@@ -127,8 +127,8 @@ const HighMaps = ({ mapData }) => {
   );
 };
 
-HighMaps.defaultProps = {
+CountryMaps.defaultProps = {
   mapData: {},
 };
 
-export default React.memo(HighMaps);
+export default React.memo(CountryMaps);

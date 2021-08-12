@@ -3,10 +3,10 @@ import {
   FormHelperText,
   InputLabel,
   MenuItem,
-  Select,
+  Select
 } from '@material-ui/core';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import titleCase from '../../utils/titleCase';
 

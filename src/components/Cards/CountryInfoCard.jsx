@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { getInfomationCountry } from '../../../apis';
 import { Box, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-CountryInfo.propTypes = {
+CountryInfoCard.propTypes = {
   report: PropTypes.object,
 };
 
-function CountryInfo({ t, report }) {
+function CountryInfoCard({ t, report }) {
   return (
     <>
       {Object.keys(report).length > 0 ? (
@@ -35,4 +33,4 @@ function CountryInfo({ t, report }) {
   );
 }
 
-export default CountryInfo;
+export default CountryInfoCard;

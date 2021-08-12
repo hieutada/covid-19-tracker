@@ -1,5 +1,3 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
-import TranslateIcon from '@material-ui/icons/Translate';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

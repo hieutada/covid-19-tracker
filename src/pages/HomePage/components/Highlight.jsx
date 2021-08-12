@@ -4,7 +4,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import HorizontalCard from '../../../components/HighlightCards/HorizontalCard';
+import HighlightCard from '../../../components/Cards/HighlightCard';
 import { DiseaseColors } from '../../../constants';
 
 // Highlight.propTypes = {
@@ -46,7 +46,12 @@ function Highlight({ report }) {
     <Grid container spacing={3}>
       {dataCard.map((field, idx) => (
         <Grid key={idx} item md={3} sm={6} xs={12}>
-          <HorizontalCard title={field.title} number={field.number} color={field.color} />
+          <HighlightCard
+            variant='horizontal'
+            title={field.title}
+            number={field.number}
+            color={field.color}
+          />
         </Grid>
       ))}
     </Grid>

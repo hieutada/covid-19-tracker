@@ -1,13 +1,13 @@
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
-import { DiseaseColors } from '../../../constants';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getHistoryByCountry } from '../../../apis';
+import { getHistoryByCountry } from '../../apis';
+import { DiseaseColors } from '../../constants';
 
-LineChart.propTypes = {
+CasesHistoryLineChart.propTypes = {
   slug: PropTypes.string,
 };
 
@@ -55,7 +55,7 @@ const generateOptions = (title, categories, series) => {
   };
 };
 
-function LineChart({ slug }) {
+function CasesHistoryLineChart({ slug }) {
   const { t } = useTranslation();
   const [options, setOptions] = useState({});
   const [reportType, setReportType] = useState('30');
@@ -118,4 +118,4 @@ function LineChart({ slug }) {
   );
 }
 
-export default LineChart;
+export default CasesHistoryLineChart;

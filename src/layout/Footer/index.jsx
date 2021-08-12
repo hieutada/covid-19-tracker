@@ -1,14 +1,23 @@
 import { Typography } from '@material-ui/core';
 import React from 'react';
+import { MainColors } from '../../constants';
 
 function Footer(props) {
   return (
-    <div style={{backgroundColor: '#778899', color: '#F8F8FF', paddingBlock: '10px', marginTop: '20px'}}>
+    <div
+      style={{
+        backgroundColor: MainColors.SlateGrey,
+        color: MainColors.WhiteSmoke,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        padding: '10px 0',
+        marginTop: '20px',
+      }}
+    >
       <Typography
-        component='p'
-        style={{
-          textAlign: 'center',
-        }}
+        variant='subtitle2'
       >
         Referenced by HoleTex
         <br />

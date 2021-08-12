@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import { Grid, makeStyles, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Grid, Paper, makeStyles } from '@material-ui/core';
-import CountryInfo from './components/CountryInfo';
-import PieChart from './components/PieChart';
-import { useState } from 'react';
-import roundTo from 'round-to';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import roundTo from 'round-to';
+import CountryInfoCard from '../../../components/Cards/CountryInfoCard';
+import CasesPieChart from '../../../components/Charts/CasesPieChart';
+
 
 const useStyle = makeStyles((theme) => ({
   info: {
@@ -53,13 +53,13 @@ function Overview({ report }) {
     <Grid container spacing={3}>
       <Grid item xs={12} md={5}>
         <Paper className={classes.info}>
-          <CountryInfo t={t} report={report} />
+          <CountryInfoCard report={report} />
         </Paper>
       </Grid>
 
       <Grid item xs={12} md={7}>
         <Paper style={{ height: '100%' }}>
-          <PieChart dataChart={dataChart} />
+          <CasesPieChart dataChart={dataChart} />
         </Paper>
       </Grid>
     </Grid>

@@ -1,11 +1,10 @@
 import { Container } from '@material-ui/core';
 import React, { useCallback, useEffect, useState } from 'react';
 import { getApiCountries, getReportByCountry } from '../../apis';
-import CountrySelector from '../../components/CountrySelector';
-import LanguageSelector from '../../components/LanguageSelector';
-import Overview from '../../components/Overview';
-import Summary from '../../components/Summary';
+import CountrySelector from '../../components/Selector/CountrySelector';
 import Highlight from './components/Highlight';
+import Overview from './components/Overview';
+import Summary from './components/Summary';
 
 function HomePage() {
   const [countries, setCountries] = useState([]);
@@ -15,8 +14,8 @@ function HomePage() {
   useEffect(() => {
     getApiCountries().then((res) => {
       setCountries(res.data);
-      setSelectedCountryTag('vn');
     });
+    setSelectedCountryTag('vn');
   }, []);
 
   const handleCountryChange = useCallback((e) => {

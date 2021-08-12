@@ -37,7 +37,8 @@ function NewsPage() {
                 title={article.title}
                 lead={article.lead}
                 thumbnail={article.thumbnail_url}
-                timeAgo={timeSince(article.publish_time, 'vi')}
+                publishTime={timeSince(article.publish_time, 'vi')}
+                source='VnExpress'
               />
             </Grid>
           ))}

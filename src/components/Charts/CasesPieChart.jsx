@@ -1,10 +1,10 @@
-import { DiseaseColors } from '../../../constants';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { DiseaseColors } from '../../constants';
 
-PieChart.propTypes = {
+CasesPieChart.propTypes = {
   dataChart: PropTypes.array,
 };
 
@@ -47,7 +47,7 @@ const generateOptions = (data) => {
         type: 'pie',
         name: 'Ratio',
         innerSize: '60%',
-        data: [...data],
+        data: data,
         tooltip: {
           headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
           pointFormat:
@@ -58,7 +58,7 @@ const generateOptions = (data) => {
   };
 };
 
-function PieChart({ dataChart }) {
+function CasesPieChart({ dataChart }) {
   const [options, setOptions] = useState({});
 
   useEffect(() => {
@@ -70,4 +70,4 @@ function PieChart({ dataChart }) {
   return <HighchartsReact highcharts={Highcharts} options={options} />;
 }
 
-export default PieChart;
+export default CasesPieChart;

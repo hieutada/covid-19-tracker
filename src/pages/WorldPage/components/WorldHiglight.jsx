@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
-import VerticalCard from '../../../components/HighlightCards/VerticalCard';
+import React, { useEffect, useState } from 'react';
+import HighlightCard from '../../../components/Cards/HighlightCard';
 import { DiseaseColors } from '../../../constants';
-import { useState } from 'react';
 
 WorldHiglight.propTypes = {};
 
@@ -45,7 +43,8 @@ function WorldHiglight({ data }) {
     <Grid container spacing={2}>
       {list.map((item) => (
         <Grid item xs={12} sm={6}>
-          <VerticalCard
+          <HighlightCard
+            variant='vertical'
             title={item.title}
             number={item.number}
             sub={item.sub}

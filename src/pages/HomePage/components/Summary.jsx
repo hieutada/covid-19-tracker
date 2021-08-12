@@ -1,10 +1,10 @@
 import { Grid, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { getMapDataByCountryTag } from '../../apis';
-import { VnAllGeo } from '../../constants';
-import HighMaps from './components/HighMaps';
-import LineChart from './components/LineChart';
+import { getMapDataByCountryTag } from '../../../apis';
+import CasesHistoryLineChart from '../../../components/Charts/CasesHistoryLineChart';
+import CountryMaps from '../../../components/Maps/CountryMaps';
+import { VnAllGeo } from '../../../constants';
 
 Summary.propTypes = {
   countryTag: PropTypes.string,
@@ -27,13 +27,13 @@ function Summary({ countryTag }) {
     <Grid container spacing={3}>
       <Grid item sm={8} xs={12}>
         <Paper>
-          <LineChart slug={countryTag} />
+          <CasesHistoryLineChart slug={countryTag} />
         </Paper>
       </Grid>
 
       <Grid item sm={4} xs={12}>
         <Paper style={{ height: '100%' }}>
-          <HighMaps mapData={mapData} />
+          <CountryMaps mapData={mapData} />
         </Paper>
       </Grid>
     </Grid>
