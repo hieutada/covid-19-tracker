@@ -3,7 +3,7 @@ import {
   FormHelperText,
   InputLabel,
   MenuItem,
-  Select
+  Select,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -17,7 +17,7 @@ CountrySelector.propTypes = {
 };
 
 function CountrySelector({ value, handleOnChange, countries }) {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const countriesList = countries.sort((a, b) =>
     a.Country.localeCompare(b.Country)

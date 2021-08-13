@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NewsCard({ url, title, lead, thumbnail, timeAgo }) {
+export default function NewsCard({ url, title, lead, thumbnail, publishTime, source }) {
   const classes = useStyles();
 
   return (
@@ -43,7 +43,7 @@ export default function NewsCard({ url, title, lead, thumbnail, timeAgo }) {
               component='p'
               style={{ marginTop: '8px' }}
             >
-              VnExpres - {timeAgo} trước
+              {source} - {publishTime} trước
             </Typography>
           </CardContent>
         </CardActionArea>

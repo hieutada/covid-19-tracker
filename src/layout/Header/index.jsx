@@ -1,11 +1,9 @@
 import {
   AppBar,
   Box,
-  Container,
-  Divider,
-  makeStyles,
+  Container, makeStyles,
   Toolbar,
-  Typography,
+  Typography
 } from '@material-ui/core';
 import React from 'react';
 import LanguageSelector from '../../components/Selector/LanguageSelector';
@@ -36,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header(props) {
+function Header() {
   const classes = useStyles();
 
   return (
@@ -50,8 +48,6 @@ function Header(props) {
             </div>
           </Container>
         </Box>
-
-        {/* <Divider /> */}
 
         {/* Bar 1 */}
         <AppBar className={classes.rootBar}>

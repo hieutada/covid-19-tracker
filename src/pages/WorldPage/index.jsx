@@ -28,14 +28,19 @@ function WorldPage() {
 
   useEffect(() => {
     getReportOnWorld()
-      .then((res) => setCardsData(res.data))
+      .then((res) => {
+        setCardsData(res.data);
+        if (!cardsData.cache) {
+          cardsData.cache['world'] = 'haha'
+        }
+      })
       .catch((err) => history.push('/'));
 
     getNcovReport()
       .then((res) => {
         const world = res.data.data['TG'];
         const top = world.slice(0, 5);
-        
+
         setTableData(world);
         setTop5(top);
       })

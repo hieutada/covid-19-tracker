@@ -1,11 +1,12 @@
 import { Box, Container, Grid } from '@material-ui/core';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { getVnExpressNews } from '../../apis';
-import NewsCard from './components/NewsCard';
+
 import CustomPagination from './components/CustomPagination';
 import timeSince from '../../utils/timeSince';
+import NewsCard from '../../components/Cards/NewsCard';
 
 function NewsPage() {
   const [list, setList] = useState([]);
@@ -20,9 +21,9 @@ function NewsPage() {
     });
   }, [page]);
 
-  const handleChangePage = (page) => {
+  const handleChangePage = useCallback((page) => {
     setPage(page);
-  };
+  }, []);
 
   return (
     <Container style={{ marginTop: '12px' }}>

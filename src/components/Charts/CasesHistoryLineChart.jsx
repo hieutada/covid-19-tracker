@@ -2,7 +2,7 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getHistoryByCountry } from '../../apis';
 import { DiseaseColors } from '../../constants';
@@ -11,49 +11,43 @@ CasesHistoryLineChart.propTypes = {
   slug: PropTypes.string,
 };
 
-const generateOptions = (title, categories, series) => {
-  return {
-    chart: {
-      type: 'line',
-      height: 500,
-    },
+const generateOptions = (title, categories, series) => ({
+  chart: {
+    type: 'line',
+    height: 500,
+  },
 
+  title: {
+    text: title,
+  },
+
+  subtitle: {
+    text: 'Source: disease.sh',
+  },
+
+  colors: [DiseaseColors.CASES, DiseaseColors.RECOVERED, DiseaseColors.DEATHS],
+
+  xAxis: {
+    categories: categories,
+    crosshair: true,
+  },
+
+  yAxis: {
     title: {
-      text: title,
+      text: null,
     },
+  },
 
-    subtitle: {
-      text: 'Source: disease.sh',
-    },
-
-    colors: [
-      DiseaseColors.CASES,
-      DiseaseColors.RECOVERED,
-      DiseaseColors.DEATHS,
-    ],
-
-    xAxis: {
-      categories: categories,
-      crosshair: true,
-    },
-
-    yAxis: {
-      title: {
-        text: null,
+  plotOptions: {
+    series: {
+      label: {
+        connectorAllowed: false,
       },
     },
+  },
 
-    plotOptions: {
-      series: {
-        label: {
-          connectorAllowed: false,
-        },
-      },
-    },
-
-    series: series,
-  };
-};
+  series: series,
+});
 
 function CasesHistoryLineChart({ slug }) {
   const { t } = useTranslation();
@@ -89,9 +83,9 @@ function CasesHistoryLineChart({ slug }) {
     }
   }, [t, slug, reportType]);
 
-  const reportTypeChange = (event, value) => {
+  const reportTypeChange = useCallback((event, value) => {
     setReportType(value);
-  };
+  }, []);
 
   return (
     <>

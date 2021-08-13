@@ -20,7 +20,9 @@ function VietNamPage() {
         <Grid item xs={12} md={6}>
           <VnCaseTable data={data} />
         </Grid>
-        <Grid item xs={12} md={6}></Grid>
+        <Grid item xs={12} md={6}>
+          
+        </Grid>
       </Grid>
     </Container>
   );

@@ -25,7 +25,6 @@ function createData(name, today, total) {
 }
 
 export default function VnCaseTable({ data }) {
-  // {name: "Hồ Chí Minh", cases: "138615", recovered: "56447", deaths: "3008"}
   const classes = useStyles();
   const { t, i18n } = useTranslation();
   const [rows, setRows] = useState([]);
@@ -43,8 +42,8 @@ export default function VnCaseTable({ data }) {
         <TableHead>
           <TableRow>
             <TableCell>Tỉnh/TP</TableCell>
-            <TableCell align='right'>Hôm nay</TableCell>
-            <TableCell align='right'>Tổng số</TableCell>
+            <TableCell align='right'>{t('today')}</TableCell>
+            <TableCell align='right'>{t('total')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

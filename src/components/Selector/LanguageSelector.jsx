@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 function LanguageSelector() {
   const { i18n } = useTranslation();
   const [value, setValue] = useState(i18n.language);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-    i18n.changeLanguage(event.target.value);
-  };
+  const handleChange = useCallback((e) => {
+    setValue(e.target.value);
+    i18n.changeLanguage(e.target.value);
+  }, []);
 
   return (
     <select

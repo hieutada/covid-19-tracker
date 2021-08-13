@@ -46,7 +46,6 @@ function ContinentMaps({ data }) {
 
   useEffect(() => {
     if (data.length > 0) {
-      console.log(mapData);
       setOptions(generateOptions(data));
     }
 

@@ -1,2 +1,2 @@
-import myCustomVnAllGeo from './vn-all-geo.json';
+import myCustomVnAllGeo from './vn-all.json';
 export const VnAllGeo = myCustomVnAllGeo;
