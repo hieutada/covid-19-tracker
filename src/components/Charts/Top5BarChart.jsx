@@ -62,11 +62,11 @@ function Top5BarChart({ data }) {
   useEffect(() => {
     if (data.length > 0) {
       const lastUpdate = data[0].last_update;
-      const categories = data.map((country) => country.province_name);
+      const categories = data.map((country) => country.country);
       const series = [
         {
           name: t('total cases'),
-          data: data.map((country) => country.confirmed),
+          data: data.map((country) => country.cases),
         },
         {
           name: t('recovered'),

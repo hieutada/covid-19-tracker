@@ -1,6 +1,6 @@
 import { Container, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { getTodayProvinces } from '../../apis';
+import { getAllWorldReport, getTodayProvinces } from '../../apis';
 import VnCaseTable from '../../components/Tables/VnCaseTable';
 
 function VietNamPage() {
@@ -12,6 +12,10 @@ function VietNamPage() {
         setData(res.data.data.cases);
       })
       .catch((err) => {});
+
+    getAllWorldReport().then((res) => {
+      console.log(res.data);
+    });
   }, []);
 
   return (
@@ -20,9 +24,7 @@ function VietNamPage() {
         <Grid item xs={12} md={6}>
           <VnCaseTable data={data} />
         </Grid>
-        <Grid item xs={12} md={6}>
-          
-        </Grid>
+        <Grid item xs={12} md={6}></Grid>
       </Grid>
     </Container>
   );

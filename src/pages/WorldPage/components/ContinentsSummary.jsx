@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getWorldDetail } from '../../../apis';
+import { getReportInContinents } from '../../../apis';
 import { useHistory } from 'react-router-dom';
 import ContinentMaps from '../../../components/Maps/ContinentMaps';
 import TitleDivider from '../../../components/TitleDivider';
@@ -23,28 +23,26 @@ function ContinentsSummary() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getWorldDetail()
+    getReportInContinents()
       .then((res) => {
         const World = res.data;
         const formatData = Contients.map((c) => {
           const continent = World.filter(
-            (country) => country.continent === c.name
-          );
-          // [c.id, continent.reduce((x, y) => x + y.cases, 0)]
+            (continent) => continent.continent === c.name
+          )[0];
+
           return {
             name: c.name,
             id: c.id,
             color: c.color,
-            value: continent.reduce((x, y) => x + y.cases, 0),
-            // recovered: continent.reduce((x, y) => x + y.recovered, 0),
-            // deaths: continent.reduce((x, y) => x + y.deaths, 0),
+            value: continent.cases,
+            recovered: continent.recovered,
+            deaths: continent.deaths,
           };
         });
         setData(formatData);
       })
-      .catch((err) => {
-        history.push('/');
-      });
+      .catch((err) => {});
   }, []);
 
   return (

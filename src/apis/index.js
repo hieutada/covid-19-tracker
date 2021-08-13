@@ -29,17 +29,15 @@ export const getHistoryByCountry = (slug, num) =>
     `https://disease.sh/v3/covid-19/historical/${slug}?lastdays=${num}`
   );
 
+export const getReportInContinents = () =>
+  axios.get('https://disease.sh/v3/covid-19/continents?yesterday=1');
+
 export const getVaccineReport = () =>
   axios.get(
     'https://disease.sh/v3/covid-19/vaccine/coverage/countries?lastdays=1'
   );
 
 // To Vinh Khang collect
-
-export const getWorldDetail = () =>
-  axios.get(
-    'https://api-kent.netlify.app/.netlify/functions/api/global/countries'
-  );
 
 export const getDetailVn = () =>
   axios.get('https://api-kent.netlify.app/.netlify/functions/api/vn');
@@ -56,3 +54,7 @@ export const getVnExpressNews = (page) =>
 
 export const getTodayProvinces = () =>
   axios.get('https://api.zingnews.vn/public/v2/corona/getChart?type=province');
+
+// ---
+export const getAllWorldReport = () =>
+  axios.get('https://disease.sh/v3/covid-19/countries?sort=cases');

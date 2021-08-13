@@ -58,7 +58,18 @@ const generateOptions = (mapData, data) => ({
     layout: 'horizontal',
     align: 'center',
     verticalAlign: 'bottom',
-    valueDecimals: 0
+    valueDecimals: 0,
+  },
+
+  tooltip: {
+    useHTML: true,
+    backgroundColor: '#9c9c9c',
+    borderColor: '#aaa',
+    headerFormat: '',
+    pointFormat:
+      '<div style="text-align: center; text-transform: uppercase; color:white">' +
+      '<span style="text-align: center;"><b>{point.name}</b></span></div>' +
+      '<div style="color:white"> <b>Nhiễm bệnh: {point.value}</span></b> <br/>',
   },
 
   series: [

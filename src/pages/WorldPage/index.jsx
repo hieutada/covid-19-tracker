@@ -2,7 +2,7 @@ import { Container, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { getNcovReport, getReportOnWorld } from '../../apis';
+import { getAllWorldReport, getNcovReport, getReportOnWorld } from '../../apis';
 import Top5BarChart from '../../components/Charts/Top5BarChart';
 import WorldTable from '../../components/Tables/WorldTable';
 import TitleDivider from '../../components/TitleDivider';
@@ -30,21 +30,21 @@ function WorldPage() {
     getReportOnWorld()
       .then((res) => {
         setCardsData(res.data);
-        if (!cardsData.cache) {
-          cardsData.cache['world'] = 'haha'
-        }
       })
       .catch((err) => history.push('/'));
 
-    getNcovReport()
+    getAllWorldReport()
       .then((res) => {
-        const world = res.data.data['TG'];
+        const world = res.data;
         const top = world.slice(0, 5);
-
+        console.log("🚀 ~ file: index.jsx ~ line 50 ~ .then ~ top", top)
+        
         setTableData(world);
         setTop5(top);
-      })
+      }, [])
       .catch((err) => history.push('/'));
+
+    
   }, []);
 
   return (

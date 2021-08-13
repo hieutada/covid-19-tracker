@@ -66,8 +66,8 @@ export default function WorldTable({ data }) {
   useEffect(() => {
     const rowsData = data.map((country, index) => ({
       top: index + 1,
-      country: country.province_name,
-      confirmed: country.confirmed,
+      country: country.country,
+      confirmed: country.cases,
       recovered: country.recovered,
       deaths: country.deaths,
     }));
