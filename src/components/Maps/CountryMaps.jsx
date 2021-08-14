@@ -98,15 +98,12 @@ const CountryMaps = ({ mapData }) => {
             value: obj.cases,
           }));
 
-          // const maxLinearColor =
-          //   data.reduce((a, b) => a + parseInt(b.value), 0) / data.length;
-
           setOptions(generateOptions(mapData, data));
         });
       } else {
         const fakeData = mapData.features.map((feature, index) => ({
           name: feature.properties['name'],
-          value: index,
+          value: Math.floor(Math.random() * 501) * (index + 1),
         }));
 
         setOptions(generateOptions(mapData, fakeData, fakeData.length));

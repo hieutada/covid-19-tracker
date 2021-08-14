@@ -28,7 +28,7 @@ function HomePage() {
         setReport(res.data);
       });
     }
-  }, [countries, selectedCountryTag]);
+  }, [selectedCountryTag]);
 
   return (
     <Container style={{ marginTop: '8px' }}>
