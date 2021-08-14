@@ -104,8 +104,10 @@ export default function WorldTable({ data }) {
                         <TableCell key={column.id} align={column.align}>
                           {column.id === 'country' && (
                             <span
-                              className={`flag-icon flag-icon-squared flag-icon-${row.slug.toLowerCase()}`}
-                              style={{marginRight: '8px'}}
+                              className={`flag-icon flag-icon-squared flag-icon-${
+                                row.slug ? row.slug.toLowerCase() : ''
+                              }`}
+                              style={{ marginRight: '8px' }}
                             />
                           )}
                           {column.format && typeof value === 'number'

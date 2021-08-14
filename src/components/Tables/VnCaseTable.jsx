@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import timeSince from '../../utils/timeSince';
 
 const useStyles = makeStyles({
   container: {
@@ -30,10 +31,12 @@ export default function VnCaseTable({ data }) {
   const [rows, setRows] = useState([]);
 
   useEffect(() => {
-    const list = data.map((province) =>
-      createData(province.x, province.y, province.z)
-    );
-    setRows(list);
+    if (Object.keys(data).length) {
+      const list = data.cases.map((province) =>
+        createData(province.x, province.y, province.z)
+      );
+      setRows(list);
+    }
   }, [data]);
 
   return (
@@ -41,9 +44,21 @@ export default function VnCaseTable({ data }) {
       <Table stickyHeader aria-label='sticky table' className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Tỉnh/TP</TableCell>
-            <TableCell align='right'>{t('today')}</TableCell>
-            <TableCell align='right'>{t('total')}</TableCell>
+            <TableCell>
+              Tỉnh/TP
+              <br />
+              Cập nhật: {timeSince(data.lastUpdated, i18n.language)} trước
+            </TableCell>
+            <TableCell align='right'>
+              {t('today')}
+              <br />
+              (+{new Intl.NumberFormat(i18n.language).format(data.toDay)})
+            </TableCell>
+            <TableCell align='right'>
+              {t('total')}
+              <br />
+              (+{new Intl.NumberFormat(i18n.language).format(data.total)})
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

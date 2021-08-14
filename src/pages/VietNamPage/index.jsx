@@ -4,12 +4,12 @@ import { getAllWorldReport, getTodayProvinces, getVnProvincesHistory } from '../
 import VnCaseTable from '../../components/Tables/VnCaseTable';
 
 function VietNamPage() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
 
   useEffect(() => {
     getTodayProvinces()
       .then((res) => {
-        setData(res.data.data.cases);
+        setData(res.data.data);
       })
       .catch((err) => {});
   }, []);
