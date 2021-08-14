@@ -58,3 +58,4 @@ export const getTodayProvinces = () =>
 // ---
 export const getAllWorldReport = () =>
   axios.get('https://disease.sh/v3/covid-19/countries?sort=cases');
+

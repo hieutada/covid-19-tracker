@@ -77,7 +77,6 @@ const generateOptions = (mapData, data) => ({
       data: data,
       mapData: mapData,
       joinBy: 'name',
-      name: 'Số ca',
     },
   ],
 });

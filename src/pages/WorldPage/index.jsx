@@ -37,7 +37,6 @@ function WorldPage() {
       .then((res) => {
         const world = res.data;
         const top = world.slice(0, 5);
-        console.log("🚀 ~ file: index.jsx ~ line 50 ~ .then ~ top", top)
         
         setTableData(world);
         setTop5(top);

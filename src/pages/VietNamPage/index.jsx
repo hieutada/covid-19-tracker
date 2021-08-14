@@ -1,6 +1,6 @@
 import { Container, Grid } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { getAllWorldReport, getTodayProvinces } from '../../apis';
+import { getAllWorldReport, getTodayProvinces, getVnProvincesHistory } from '../../apis';
 import VnCaseTable from '../../components/Tables/VnCaseTable';
 
 function VietNamPage() {
@@ -12,10 +12,6 @@ function VietNamPage() {
         setData(res.data.data.cases);
       })
       .catch((err) => {});
-
-    getAllWorldReport().then((res) => {
-      console.log(res.data);
-    });
   }, []);
 
   return (
