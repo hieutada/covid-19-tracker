@@ -66,6 +66,7 @@ export default function WorldTable({ data }) {
   useEffect(() => {
     const rowsData = data.map((country, index) => ({
       top: index + 1,
+      slug: country.countryInfo.iso2,
       country: country.country,
       confirmed: country.cases,
       recovered: country.recovered,
@@ -101,6 +102,12 @@ export default function WorldTable({ data }) {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
+                          {column.id === 'country' && (
+                            <span
+                              className={`flag-icon flag-icon-squared flag-icon-${row.slug.toLowerCase()}`}
+                              style={{marginRight: '8px'}}
+                            />
+                          )}
                           {column.format && typeof value === 'number'
                             ? column.format(value, i18n.language)
                             : value}
