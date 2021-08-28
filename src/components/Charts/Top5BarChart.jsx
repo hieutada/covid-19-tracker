@@ -7,16 +7,13 @@ import timeSince from '../../utils/timeSince';
 
 Top5BarChart.propTypes = {};
 
-const generateOptions = (lastUpdate, categories, series) => ({
+const generateOptions = (categories, series) => ({
   chart: {
     type: 'bar',
     height: '400px',
   },
   title: {
     text: null,
-  },
-  subtitle: {
-    text: `Update: ${timeSince(lastUpdate, 'en')} ago`,
   },
 
   colors: [DiseaseColors.CASES, DiseaseColors.RECOVERED, DiseaseColors.DEATHS],
@@ -75,7 +72,7 @@ function Top5BarChart({ data }) {
         { name: t('deaths'), data: data.map((country) => country.deaths) },
       ];
 
-      setOptions(generateOptions(lastUpdate, categories, series));
+      setOptions(generateOptions(categories, series));
     }
   }, [data]);
 

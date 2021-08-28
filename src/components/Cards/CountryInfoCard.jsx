@@ -17,8 +17,8 @@ function CountryInfoCard({ report }) {
           <img
             src={report.countryInfo.flag}
             alt={report.countryInfo.iso2}
-            width='240px'
-            style={{marginTop: '12px'}}
+            width='100%'
+            style={{padding: '12px 0 0'}}
           />
           <Typography variant='h5'>{report.country}</Typography>
           <Typography>

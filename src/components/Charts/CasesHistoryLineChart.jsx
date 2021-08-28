@@ -11,18 +11,19 @@ CasesHistoryLineChart.propTypes = {
   slug: PropTypes.string,
 };
 
-const generateOptions = (title, categories, series) => ({
+const generateOptions = (categories, series) => ({
   chart: {
     type: 'line',
     height: 500,
   },
 
   title: {
-    text: title,
+    text: null,
   },
 
   subtitle: {
     text: 'Source: disease.sh',
+    align: 'right',
   },
 
   colors: [DiseaseColors.CASES, DiseaseColors.RECOVERED, DiseaseColors.DEATHS],
@@ -57,9 +58,9 @@ function CasesHistoryLineChart({ slug }) {
   useEffect(() => {
     if (slug) {
       getHistoryByCountry(slug, reportType).then((res) => {
-        const { cases, recovered, deaths } = res.data.timeline;
+        const { cases } = res.data.timeline;
 
-        const title = t('title_line_chart');
+        // const title = t('title_line_chart');
 
         const timeLine = Object.keys(cases);
 
@@ -68,17 +69,9 @@ function CasesHistoryLineChart({ slug }) {
             name: t('total cases'),
             data: Object.keys(cases).map((key) => cases[key]),
           },
-          {
-            name: t('recovered'),
-            data: Object.keys(recovered).map((key) => recovered[key]),
-          },
-          {
-            name: t('deaths'),
-            data: Object.keys(deaths).map((key) => deaths[key]),
-          },
         ];
 
-        setOptions(generateOptions(title, timeLine, series));
+        setOptions(generateOptions(timeLine, series));
       });
     }
   }, [t, slug, reportType]);
@@ -97,13 +90,13 @@ function CasesHistoryLineChart({ slug }) {
         style={{ marginTop: 10, marginLeft: 10 }}
       >
         <ToggleButton value='all' aria-label='all'>
-          {t('all')}
+          {t('options.all')}
         </ToggleButton>
         <ToggleButton value='30' aria-label='30d'>
-          {t('30 days')}
+          {t('options.30d')}
         </ToggleButton>
         <ToggleButton value='7' aria-label='7d'>
-          {t('7 days')}
+          {t('options.7d')}
         </ToggleButton>
       </ToggleButtonGroup>
 

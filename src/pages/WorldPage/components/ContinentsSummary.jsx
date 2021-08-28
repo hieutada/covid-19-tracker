@@ -1,11 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getReportInContinents } from '../../../apis';
-import { useHistory } from 'react-router-dom';
 import ContinentMaps from '../../../components/Maps/ContinentMaps';
-import TitleDivider from '../../../components/TitleDivider';
 
 ContinentsSummary.propTypes = {};
 
@@ -19,7 +14,6 @@ const Contients = [
 ];
 
 function ContinentsSummary() {
-  const history = useHistory();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -45,12 +39,7 @@ function ContinentsSummary() {
       .catch((err) => {});
   }, []);
 
-  return (
-    <>
-      <TitleDivider variant='left' text='Thống kê theo Châu lục' />
-      <ContinentMaps data={data} />
-    </>
-  );
+  return <ContinentMaps data={data} />;
 }
 
 export default ContinentsSummary;

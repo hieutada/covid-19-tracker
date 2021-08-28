@@ -45,9 +45,9 @@ export default function VnCaseTable({ data }) {
         <TableHead>
           <TableRow>
             <TableCell>
-              Tỉnh/TP
+              {t('provinceAndCity')}
               <br />
-              Cập nhật: {timeSince(data.lastUpdated, i18n.language)} trước
+              {t('update')}: {timeSince(data.lastUpdated, i18n.language)}
             </TableCell>
             <TableCell align='right'>
               {t('today')}

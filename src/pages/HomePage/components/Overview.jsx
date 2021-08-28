@@ -1,11 +1,11 @@
-import { Grid, makeStyles, Paper } from '@material-ui/core';
+import { Box, Grid, makeStyles, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import roundTo from 'round-to';
 import CountryInfoCard from '../../../components/Cards/CountryInfoCard';
 import CasesPieChart from '../../../components/Charts/CasesPieChart';
-
+import TitleDivider from '../../../components/TitleDivider';
 
 const useStyle = makeStyles((theme) => ({
   info: {
@@ -13,7 +13,8 @@ const useStyle = makeStyles((theme) => ({
     alignItem: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    height: '100%',
+    height: '400px',
+    // maxHeight: '400px',
   },
 }));
 
@@ -51,14 +52,16 @@ function Overview({ report }) {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} sm={4} md={5}>
+        <TitleDivider variant='left' text={t('title.countryInfo')} />
         <Paper className={classes.info}>
           <CountryInfoCard report={report} />
         </Paper>
       </Grid>
 
-      <Grid item xs={12} md={7}>
-        <Paper style={{ height: '100%' }}>
+      <Grid item xs={12} sm={8} md={7}>
+        <TitleDivider variant='left' text={t('title.ratioChart')} />
+        <Paper>
           <CasesPieChart dataChart={dataChart} />
         </Paper>
       </Grid>

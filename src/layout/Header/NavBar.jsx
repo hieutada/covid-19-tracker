@@ -36,19 +36,19 @@ function NavBar() {
           <TemporaryDrawer />
 
           <NavLink className={classes.link} to='/'>
-            <Button color='inherit'>{t('home').toUpperCase()}</Button>
+            <Button color='inherit'>{t('navbar.home').toUpperCase()}</Button>
           </NavLink>
 
           <NavLink className={classes.link} to='/news'>
-            <Button color='inherit'>{t('news').toUpperCase()}</Button>
+            <Button color='inherit'>{t('navbar.news').toUpperCase()}</Button>
           </NavLink>
 
           <NavLink className={classes.link} to='/world'>
-            <Button color='inherit'>{t('world').toUpperCase()}</Button>
+            <Button color='inherit'>{t('navbar.world').toUpperCase()}</Button>
           </NavLink>
 
           <NavLink className={classes.link} to='/vietnam'>
-            <Button color='inherit'>{t('Vietnam').toUpperCase()}</Button>
+            <Button color='inherit'>{t('navbar.Vietnam').toUpperCase()}</Button>
           </NavLink>
         </Toolbar>
       </Container>

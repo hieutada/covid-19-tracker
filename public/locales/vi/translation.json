@@ -1,36 +1,56 @@
 {
-  "title_app": "SỐ LIỆU COVID-19",
-  "language": "Ngôn ngữ",
+  "navbar": {
+    "home": "Trang chủ",
+    "news": "Tin tức",
+    "world": "Thế Giới",
+    "Vietnam": "Việt Nam"
+  },
+
+  "title": {
+    "highlightData": "Số liệu nổi bật",
+    "countryInfo": "Thông tin quốc gia",
+    "ratioChart" : "Tỉ lệ Covid-19",
+    "historyChart" : "Biểu đồ lịch sử ghi nhận Covid-19",
+    "areaMaps" : "Bản đồ vùng dịch",
+    "inTheWorld" : "Trên toàn Thế Giới",
+    "top5Chart" : "Top 5 quốc gia chịu ảnh hưởng Covid-19",
+    "continentMaps" : "Thống kê theo châu lục",
+    "allCountriesTable" : "Bảng thống kê theo quốc gia"
+  },
+
+  "options" : {
+    "all": "Tất cả",
+    "30d": "30 ngày",
+    "7d": "7 ngày"
+  },
+
+  "variants_corona": "Các biến thể virus Corona",
+  "vaccines_covid": "Các vác-xin Covid-19",
+  "about": "thông tin",
+
+  "No": "STT",
+  "rows number": "số hàng",
+
   "country": "quốc gia",
   "country_heper_text": "Lựa chọn quốc gia",
+
   "total cases": "số ca nhiễm",
   "confirmed": "đã ghi nhận",
   "active": "đang điều trị",
   "recovered": "hồi phục",
   "deaths": "tử vong",
+
   "region": "Khu vực",
   "population": "Dân số",
+
   "Asia": "Châu Á",
   "Africa": "Châu Phi",
   "Europe": "Châu Âu",
   "North America": "Bắc Mỹ",
   "South America": "Nam Mỹ",
   "Australia-Oceania": "Châu Đại Dương",
-  "all": "tất cả",
-  "30 days": "30 ngày",
-  "7 days": "7 ngày",
-  "today": "hôm nay",
-  "No": "STT",
-  "title_line_chart": "Lịch sử ghi nhận Covid-19",
 
-  "variants_corona": "Các biến thể virus Corona",
-  "vaccines_covid": "Các vác-xin Covid-19",
-  "about": "thông tin",
-
-  "Vietnam": "Việt Nam",
-  "world": "thế giới",
-  "news": "tin tức",
-  "home": "trang chủ",
-
-  "rows number": "số hàng"
+  "provinceAndCity" : "Tỉnh/TP",
+  "today" : "hôm nay",
+  "total" : "tổng"
 }

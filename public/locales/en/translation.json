@@ -1,34 +1,55 @@
 {
-  "title_app": "COVID-19 DATA",
-  "language": "Language",
+  "navbar": {
+    "home": "home",
+    "news": "news",
+    "world": "world",
+    "Vietnam": "Vietnam"
+  },
+
+  "title": {
+    "highlightData": "Highlight Data",
+    "countryInfo": "Country Infomation",
+    "ratioChart" : "Rate of Covid-19",
+    "historyChart" : "Recorded history of Covid-19",
+    "areaMaps" : "Epidemic area map",
+    "inTheWorld" : "In the World",
+    "top5Chart" : "Top 5 countries affected by Covid-19",
+    "continentMaps" : "Statistics by continent",
+    "allCountriesTable" : "Statistics table by country"
+  },
+
+  "options" : {
+    "all": "All",
+    "30d": "30 days",
+    "7d": "7 days"
+  },
+
+  "variants_corona": "Variants of Corona virus",
+  "vaccines_covid": "Vaccines for Covid-19",
+  "about": "about",
+
+  "No": "No",
+
   "country": "country",
   "country_heper_text": "Select country",
+
   "total cases": "total cases",
   "confirmed": "confirmed",
   "active": "active",
   "recovered": "recovered",
   "deaths": "deaths",
+
   "region": "Region",
   "population": "Population",
+
   "Asia": "Asia",
   "Africa": "Africa",
   "Europe": "Europe",
   "North America": "North America",
   "South America": "South America",
   "Australia-Oceania": "Australia-Oceania",
-  "all": "all",
-  "30 days": "30 days",
-  "7 days": "7 days",
-  "today": "today",
-  "No": "No",
-  "title_line_chart": "Recorded history of Covid-19",
 
-  "variants_corona": "Variants of Corona virus",
-  "vaccines_covid": "Vaccines for Covid-19",
-  "about": "about",
-
-  "Vietnam": "Vietnam",
-  "world": "world",
-  "news": "news",
-  "home": "home"
+  "provinceAndCity" : "Province/City",
+  "today" : "today",
+  "total" : "total"
 }

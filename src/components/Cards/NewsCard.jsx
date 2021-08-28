@@ -43,7 +43,7 @@ export default function NewsCard({ url, title, lead, thumbnail, publishTime, sou
               component='p'
               style={{ marginTop: '8px' }}
             >
-              {source} - {publishTime} trước
+              {source} - {publishTime}
             </Typography>
           </CardContent>
         </CardActionArea>

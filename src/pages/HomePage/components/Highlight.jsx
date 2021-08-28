@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import HighlightCard from '../../../components/Cards/HighlightCard';
+import TitleDivider from '../../../components/TitleDivider';
 import { DiseaseColors } from '../../../constants';
 
 // Highlight.propTypes = {
@@ -43,6 +44,8 @@ function Highlight({ report }) {
   }, [t, report]);
 
   return (
+    <>
+    <TitleDivider variant="left" text={t('title.highlightData')}/>
     <Grid container spacing={3}>
       {dataCard.map((field, idx) => (
         <Grid key={idx} item md={3} sm={6} xs={12}>
@@ -55,6 +58,7 @@ function Highlight({ report }) {
         </Grid>
       ))}
     </Grid>
+    </>
   );
 }
 

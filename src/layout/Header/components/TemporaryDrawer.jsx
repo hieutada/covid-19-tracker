@@ -23,15 +23,16 @@ export default function TemporaryDrawer() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
-    ) {
-      return;
-    }
+  const toggleDrawer = () => {
+    // if (
+    //   event.type === 'keydown' &&
+    //   (event.key === 'Tab' || event.key === 'Shift')
+    // ) {
+    //   console.log(event)
+    //   return;
+    // }
 
-    setOpen(open);
+    setOpen(!open);
   };
 
   const list = [
@@ -45,11 +46,11 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment key={'left'}>
-        <IconButton color='inherit' onClick={toggleDrawer(true)}>
+        <IconButton color='inherit' onClick={toggleDrawer}>
           <Menu />
         </IconButton>
 
-        <Drawer anchor={'left'} open={open} onClose={toggleDrawer(false)}>
+        <Drawer anchor={'left'} open={open} onClose={toggleDrawer}>
           <div
             className={classes.list}
             role='presentation'
@@ -64,7 +65,7 @@ export default function TemporaryDrawer() {
               >
                 {t('about').toUpperCase()}
               </Typography>
-              <IconButton onClick={toggleDrawer(false)}>
+              <IconButton onClick={toggleDrawer}>
                 <ArrowBackIos />
               </IconButton>
             </div>

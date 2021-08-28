@@ -50,24 +50,25 @@ function WorldPage() {
     <Container>
       <Grid container spacing={2} style={{ marginTop: '8px' }}>
         <Grid item xs={12} md={6} className={classes.hl_area}>
-          <TitleDivider variant='left' text='Trên toàn thế giới' />
+          <TitleDivider variant='left' text={t('title.inTheWorld')} />
           <WorldHiglight data={cardsData} />
         </Grid>
         {/* --- */}
         <Grid item xs={12} lg={6}>
           <TitleDivider
             variant='left'
-            text='Top 5 quốc gia chịu ảnh hưởng bởi Covid-19'
+            text={t('title.top5Chart')}
           />
           <Top5BarChart data={top5} />
         </Grid>
       </Grid>
 
+      <TitleDivider variant='left' text={t('title.continentMaps')} />
       <ContinentsSummary />
 
       <TitleDivider
         variant='left'
-        text='Bảng thống kê Covid-19 trên thế giới'
+        text={t('title.allCountriesTable')}
       />
       <WorldTable data={tableData} />
     </Container>

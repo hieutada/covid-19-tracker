@@ -3,25 +3,25 @@ const timeSince = (date, lang) => {
   let interval = seconds / 31536000;
 
   if (interval > 1) {
-    return Math.floor(interval) + `${lang === 'vi' ? ' năm' : ' years'}`;
+    return Math.floor(interval) + `${lang === 'vi' ? ' năm trước' : ' years ago'}`;
   }
   interval = seconds / 2592000;
   if (interval > 1) {
-    return Math.floor(interval) + `${lang === 'vi' ? ' tháng' : ' months'}`;
+    return Math.floor(interval) + `${lang === 'vi' ? ' tháng trước' : ' months ago'}`;
   }
   interval = seconds / 86400;
   if (interval > 1) {
-    return Math.floor(interval) + `${lang === 'vi' ? ' ngày' : ' days'}`;
+    return Math.floor(interval) + `${lang === 'vi' ? ' ngày trước' : ' days ago'}`;
   }
   interval = seconds / 3600;
   if (interval > 1) {
-    return Math.floor(interval) + `${lang === 'vi' ? ' giờ' : ' hours'}`;
+    return Math.floor(interval) + `${lang === 'vi' ? ' giờ trước' : ' hours ago'}`;
   }
   interval = seconds / 60;
   if (interval > 1) {
-    return Math.floor(interval) + `${lang === 'vi' ? ' phút' : ' minutes'}`;
+    return Math.floor(interval) + `${lang === 'vi' ? ' phút trước' : ' minutes ago'}`;
   }
-  return Math.floor(seconds) + `${lang === 'vi' ? ' giây' : ' seconds'}`;
+  return Math.floor(seconds) + `${lang === 'vi' ? ' giây trước' : ' seconds ago'}`;
 };
 
 export default timeSince;

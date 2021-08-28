@@ -7,8 +7,10 @@ import { getVnExpressNews } from '../../apis';
 import CustomPagination from './components/CustomPagination';
 import timeSince from '../../utils/timeSince';
 import NewsCard from '../../components/Cards/NewsCard';
+import { useTranslation } from 'react-i18next';
 
 function NewsPage() {
+  const { i18n } = useTranslation();
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -38,7 +40,7 @@ function NewsPage() {
                 title={article.title}
                 lead={article.lead}
                 thumbnail={article.thumbnail_url}
-                publishTime={timeSince(article.publish_time, 'vi')}
+                publishTime={timeSince(article.publish_time, i18n.language)}
                 source='VnExpress'
               />
             </Grid>
