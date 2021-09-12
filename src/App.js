@@ -16,6 +16,7 @@ function App() {
     <>
       <Header />
 
+      {/* Content */}
       <Switch>
         <Route path='/' exact>
           <HomePage />

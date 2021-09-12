@@ -1,5 +1,4 @@
 import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
 import React from 'react';
 import CountUp from 'react-countup';
 
@@ -12,10 +11,6 @@ const useStyles = makeStyles({
   }),
   number: { fontWeight: 'bold', fontSize: 18 },
 });
-
-// HorizontalCard.propTypes = {
-//   summaryField: PropTypes.object,
-// };
 
 function HorizontalCard({ title, number, color }) {
   const classes = useStyles({ color });

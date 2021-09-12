@@ -44,8 +44,8 @@ export const getDetailVn = () =>
 
 // Newspapers in Vietnam
 
-export const getNcovReport = () =>
-  axios.get('https://ncovi.vnpt.vn/thongtindichbenh_v2');
+// export const getNcovReport = () =>
+//   axios.get('https://ncovi.vnpt.vn/thongtindichbenh_v2');
 
 export const getVnExpressNews = (page) =>
   axios.get(
@@ -54,6 +54,8 @@ export const getVnExpressNews = (page) =>
 
 export const getTodayProvinces = () =>
   axios.get('https://api.zingnews.vn/public/v2/corona/getChart?type=province');
+
+export const getVnVaccine = () => axios.get('https://api.zingnews.vn/public/v2/corona/getChart?type=vaccination');
 
 // ---
 export const getAllWorldReport = () =>

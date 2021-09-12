@@ -12,18 +12,14 @@ Summary.propTypes = {
   countryTag: PropTypes.string,
 };
 
-function Summary({ countryTag }) {
+function Summary({ countryTag = 'vn' }) {
   const { t } = useTranslation();
   const [mapData, setMapData] = useState({});
 
   useEffect(() => {
-    if (countryTag) {
-      if (countryTag === 'vn') {
-        setMapData(VnAllGeo);
-      } else {
-        getMapDataByCountryTag(countryTag).then((res) => setMapData(res));
-      }
-    }
+    if (countryTag === 'vn') return setMapData(VnAllGeo);
+
+    return getMapDataByCountryTag(countryTag).then((res) => setMapData(res));
   }, [countryTag]);
 
   return (

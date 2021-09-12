@@ -8,27 +8,24 @@ import Summary from './components/Summary';
 
 function HomePage() {
   const [countries, setCountries] = useState([]);
-  const [selectedCountryTag, setSelectedCountryTag] = useState('');
+  const [countryTag, setCountryTag] = useState('vn');
   const [report, setReport] = useState({});
 
   useEffect(() => {
     getApiCountries().then((res) => {
       setCountries(res.data);
     });
-    setSelectedCountryTag('vn');
   }, []);
 
   const handleCountryChange = useCallback((e) => {
-    setSelectedCountryTag(e.target.value);
+    setCountryTag(e.target.value);
   }, []);
 
   useEffect(() => {
-    if (selectedCountryTag) {
-      getReportByCountry(selectedCountryTag).then((res) => {
-        setReport(res.data);
-      });
-    }
-  }, [selectedCountryTag]);
+    getReportByCountry(countryTag).then((res) => {
+      setReport(res.data);
+    });
+  }, [countryTag]);
 
   return (
     <Container style={{ marginTop: '8px' }}>
@@ -37,14 +34,14 @@ function HomePage() {
       <CountrySelector
         countries={countries}
         handleOnChange={handleCountryChange}
-        value={selectedCountryTag}
+        value={countryTag}
       />
 
       <Overview report={report} />
 
       <Highlight report={report} />
 
-      <Summary countryTag={selectedCountryTag} />
+      <Summary countryTag={countryTag} />
     </Container>
   );
 }

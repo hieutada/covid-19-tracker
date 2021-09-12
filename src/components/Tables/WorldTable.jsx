@@ -92,33 +92,32 @@ export default function WorldTable({ data }) {
               ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, idx) => {
-                return (
-                  <TableRow hover role='checkbox' tabIndex={-1} key={idx}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.id === 'country' && (
-                            <span
-                              className={`flag-icon flag-icon-squared flag-icon-${
-                                row.slug ? row.slug.toLowerCase() : ''
-                              }`}
-                              style={{ marginRight: '8px' }}
-                            />
-                          )}
-                          {column.format && typeof value === 'number'
-                            ? column.format(value, i18n.language)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
+              .map((row, idx) => (
+                <TableRow hover role='checkbox' tabIndex={-1} key={idx}>
+                  {columns.map((column) => {
+                    const value = row[column.id];
+                    return (
+                      <TableCell key={column.id} align={column.align}>
+                        {column.id === 'country' && (
+                          <span
+                            className={`flag-icon flag-icon-squared flag-icon-${
+                              row.slug ? row.slug.toLowerCase() : ''
+                            }`}
+                            style={{ marginRight: '8px' }}
+                          />
+                        )}
+                        {column.format && typeof value === 'number'
+                          ? column.format(value, i18n.language)
+                          : value}
+                      </TableCell>
+                    );
+                  })}
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

@@ -2,7 +2,7 @@ import { Container, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { getAllWorldReport, getNcovReport, getReportOnWorld } from '../../apis';
+import { getAllWorldReport, getReportOnWorld } from '../../apis';
 import Top5BarChart from '../../components/Charts/Top5BarChart';
 import WorldTable from '../../components/Tables/WorldTable';
 import TitleDivider from '../../components/TitleDivider';
@@ -42,8 +42,6 @@ function WorldPage() {
         setTop5(top);
       }, [])
       .catch((err) => history.push('/'));
-
-    
   }, []);
 
   return (
@@ -53,7 +51,7 @@ function WorldPage() {
           <TitleDivider variant='left' text={t('title.inTheWorld')} />
           <WorldHiglight data={cardsData} />
         </Grid>
-        {/* --- */}
+
         <Grid item xs={12} lg={6}>
           <TitleDivider
             variant='left'

@@ -18,7 +18,7 @@ const useStyle = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     padding: '8px 0px',
-    margin: '0px 20px 20px 20px',
+    margin: '0px 20px 20px',
     backgroundColor: color,
     color: MainColors.White,
     border: '2px solid rounded',

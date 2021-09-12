@@ -1,16 +1,9 @@
 import { Grid } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import HighlightCard from '../../../components/Cards/HighlightCard';
 import TitleDivider from '../../../components/TitleDivider';
 import { DiseaseColors } from '../../../constants';
-
-// Highlight.propTypes = {
-//   report: PropTypes.object,
-// };
 
 function Highlight({ report }) {
   const { t } = useTranslation();

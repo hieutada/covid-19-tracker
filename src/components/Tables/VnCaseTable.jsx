@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import timeSince from '../../utils/timeSince';
+import firstUpperCase from '../../utils/firstUpperCase';
 
 const useStyles = makeStyles({
   container: {
@@ -46,18 +47,16 @@ export default function VnCaseTable({ data }) {
           <TableRow>
             <TableCell>
               {t('provinceAndCity')}
-              <br />
-              {t('update')}: {timeSince(data.lastUpdated, i18n.language)}
             </TableCell>
             <TableCell align='right'>
-              {t('today')}
+              {firstUpperCase(t('update'))}: {timeSince(data.lastUpdated, i18n.language)}
               <br />
               (+{new Intl.NumberFormat(i18n.language).format(data.toDay)})
             </TableCell>
             <TableCell align='right'>
-              {t('total')}
+              {firstUpperCase(t('total'))}
               <br />
-              (+{new Intl.NumberFormat(i18n.language).format(data.total)})
+              ({new Intl.NumberFormat(i18n.language).format(data.total)})
             </TableCell>
           </TableRow>
         </TableHead>

@@ -17,8 +17,7 @@ function NewsPage() {
   useEffect(() => {
     getVnExpressNews(page).then((res) => {
       const data = res.data.data;
-      const key = Object.keys(data)[0];
-      const articles = data[key].data;
+      const articles = Object.values(data)[0].data;
       setList(articles);
     });
   }, [page]);
